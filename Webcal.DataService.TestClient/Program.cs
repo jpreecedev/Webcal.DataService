@@ -1,6 +1,6 @@
 ﻿namespace Webcal.DataService.TestClient
 {
-    using WebcalDataService;
+    using WebcalConnect;
     
     internal class Program
     {

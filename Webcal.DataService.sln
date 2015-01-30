@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcal.DataService.TestClient", "Webcal.DataService.TestClient\Webcal.DataService.TestClient.csproj", "{A390A9E0-8F43-41A5-930A-F4351DECF517}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8055AAFC-751E-46E6-B3E2-9D159355D036} = {8055AAFC-751E-46E6-B3E2-9D159355D036}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcal.DataService.WCFService", "Webcal.DataService.WCFService\Webcal.DataService.WCFService.csproj", "{8055AAFC-751E-46E6-B3E2-9D159355D036}"
 EndProject

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="3fvyzUuNqjyTpj+CG1qDdlGFe8o=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="/mSHB4WDBZPE0U7qtbyWhtcCjoI=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsHttpBinding" name="BasicEndpoint">
       <properties>
@@ -127,10 +127,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicEndpoint" contract="WebcalDataService.IDataService" bindingType="wsHttpBinding" address="https://webcal.local/DataService.svc" bindingConfiguration="BasicEndpoint">
+    <endpoint name="BasicEndpoint" contract="WebcalConnect.IDataService" bindingType="wsHttpBinding" address="https://localhost:44300/DataService.svc" bindingConfiguration="BasicEndpoint">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://webcal.local/DataService.svc</serializedValue>
+          <serializedValue>https://localhost:44300/DataService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -142,7 +142,7 @@
           <serializedValue>BasicEndpoint</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WebcalDataService.IDataService</serializedValue>
+          <serializedValue>WebcalConnect.IDataService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

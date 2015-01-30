@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Webcal.DataService.TestClient.WebcalDataService {
+namespace Webcal.DataService.TestClient.WebcalConnect {
     using System.Runtime.Serialization;
     using System;
     
@@ -75,7 +75,7 @@ namespace Webcal.DataService.TestClient.WebcalDataService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WebcalDataService.IDataService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WebcalConnect.IDataService")]
     public interface IDataService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetData", ReplyAction="http://tempuri.org/IDataService/GetDataResponse")]
@@ -85,19 +85,19 @@ namespace Webcal.DataService.TestClient.WebcalDataService {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IDataService/GetDataUsingDataContractResponse")]
-        Webcal.DataService.TestClient.WebcalDataService.CompositeType GetDataUsingDataContract(Webcal.DataService.TestClient.WebcalDataService.CompositeType composite);
+        Webcal.DataService.TestClient.WebcalConnect.CompositeType GetDataUsingDataContract(Webcal.DataService.TestClient.WebcalConnect.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IDataService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<Webcal.DataService.TestClient.WebcalDataService.CompositeType> GetDataUsingDataContractAsync(Webcal.DataService.TestClient.WebcalDataService.CompositeType composite);
+        System.Threading.Tasks.Task<Webcal.DataService.TestClient.WebcalConnect.CompositeType> GetDataUsingDataContractAsync(Webcal.DataService.TestClient.WebcalConnect.CompositeType composite);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IDataServiceChannel : global::Webcal.DataService.TestClient.WebcalDataService.IDataService, System.ServiceModel.IClientChannel {
+    public interface IDataServiceChannel : global::Webcal.DataService.TestClient.WebcalConnect.IDataService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DataServiceClient : System.ServiceModel.ClientBase<global::Webcal.DataService.TestClient.WebcalDataService.IDataService>, global::Webcal.DataService.TestClient.WebcalDataService.IDataService {
+    public partial class DataServiceClient : System.ServiceModel.ClientBase<global::Webcal.DataService.TestClient.WebcalConnect.IDataService>, global::Webcal.DataService.TestClient.WebcalConnect.IDataService {
         
         public DataServiceClient() {
         }
@@ -126,11 +126,11 @@ namespace Webcal.DataService.TestClient.WebcalDataService {
             return base.Channel.GetDataAsync(value);
         }
         
-        public Webcal.DataService.TestClient.WebcalDataService.CompositeType GetDataUsingDataContract(Webcal.DataService.TestClient.WebcalDataService.CompositeType composite) {
+        public Webcal.DataService.TestClient.WebcalConnect.CompositeType GetDataUsingDataContract(Webcal.DataService.TestClient.WebcalConnect.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<Webcal.DataService.TestClient.WebcalDataService.CompositeType> GetDataUsingDataContractAsync(Webcal.DataService.TestClient.WebcalDataService.CompositeType composite) {
+        public System.Threading.Tasks.Task<Webcal.DataService.TestClient.WebcalConnect.CompositeType> GetDataUsingDataContractAsync(Webcal.DataService.TestClient.WebcalConnect.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
     }
