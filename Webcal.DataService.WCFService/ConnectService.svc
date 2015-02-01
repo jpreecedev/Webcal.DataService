@@ -1,4 +1,0 @@
-<%@ServiceHost language="c#" Debug="true" Factory="Webcal.DataService.WCFService.ConnectServiceHostFactory" CodeBehind="ConnectService.svc.cs"  %>
-
-
-
