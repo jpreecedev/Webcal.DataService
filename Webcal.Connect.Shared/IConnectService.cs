@@ -1,6 +1,7 @@
 ﻿namespace Webcal.Connect.Shared
 {
     using System.ServiceModel;
+    using Models;
 
     [ServiceContract]
     [XmlSerializerFormat]
@@ -10,6 +11,6 @@
         string Echo();
 
         [OperationContract]
-        void UploadTachographDocument();
+        void UploadTachographDocument(TachographDocument tachographDocument);
     }
 }

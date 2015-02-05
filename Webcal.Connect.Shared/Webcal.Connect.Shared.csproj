@@ -93,7 +93,19 @@
     <Compile Include="IConnectDocument.cs" />
     <Compile Include="IConnectKeys.cs" />
     <Compile Include="IConnectService.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\BaseNotification.cs" />
+    <Compile Include="Models\CalibrationRecord.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\LetterForDecommissioningDocument.cs" />
+    <Compile Include="Models\TachographDocument.cs" />
+    <Compile Include="Models\UndownloadabilityDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Main Icon.ico" />
@@ -107,6 +119,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

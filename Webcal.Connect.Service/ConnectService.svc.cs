@@ -1,6 +1,7 @@
 namespace Webcal.Connect.Service
 {
     using Shared;
+    using Shared.Models;
 
     public class ConnectService : BaseConnectService, IConnectService
     {
@@ -9,7 +10,7 @@ namespace Webcal.Connect.Service
             return "Echo";
         }
 
-        public void UploadTachographDocument()
+        public void UploadTachographDocument(TachographDocument tachographDocument)
         {
             throw new System.NotImplementedException();
         }
