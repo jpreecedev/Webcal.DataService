@@ -2,11 +2,27 @@
 {
     using System.Collections.Generic;
     using System.IdentityModel.Claims;
+    using System.Linq;
     using System.ServiceModel;
+    using Shared;
 
     public class BaseConnectService
     {
-        protected string FetchClaimValue(string claimType)
+        public ConnectUser User
+        {
+            get { return new ConnectUser(GetConnectKeys()); }
+        }
+
+        protected IConnectKeys GetConnectKeys()
+        {
+            int licenseKey = int.Parse(FetchClaimValue(ConnectConstants.ConnectLicenseKeyClaim));
+            string companyKey = FetchClaimValue(ConnectConstants.ConnectCompanyKeyClaim);
+            string machineKey = FetchClaimValue(ConnectConstants.ConnectMachineKeyClaim);
+
+            return new ConnectKeys(string.Empty, licenseKey, companyKey, machineKey);
+        }
+
+        private string FetchClaimValue(string claimType)
         {
             foreach (ClaimSet claimSet in ServiceSecurityContext.Current.AuthorizationContext.ClaimSets)
             {
@@ -23,7 +39,7 @@
         {
             claimValue = null;
             IEnumerable<Claim> matchingClaims = claimSet.FindClaims(claimType, Rights.PossessProperty);
-            if (matchingClaims == null)
+            if (matchingClaims == null || !matchingClaims.Any())
                 return false;
 
             IEnumerator<Claim> enumerator = matchingClaims.GetEnumerator();

@@ -60,7 +60,16 @@
     <ApplicationIcon>Main Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
@@ -79,7 +88,9 @@
     <Compile Include="ConnectSecurityTokenSerializer.cs" />
     <Compile Include="ConnectToken.cs" />
     <Compile Include="ConnectTokenParameters.cs" />
+    <Compile Include="ConnectUser.cs" />
     <Compile Include="IConnectBindingHelper.cs" />
+    <Compile Include="IConnectDocument.cs" />
     <Compile Include="IConnectKeys.cs" />
     <Compile Include="IConnectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,7 +98,20 @@
   <ItemGroup>
     <Content Include="Main Icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Webcal.Connect.Data\Webcal.Connect.Data.csproj">
+      <Project>{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}</Project>
+      <Name>Webcal.Connect.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "C:\Source\WebCal\bin" /s /i /y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -10,12 +10,7 @@
         }
 
         public DbSet<Company> Companies { get; set; }
-    }
 
-    public class Company
-    {
-        public int Id { get; set; }
-
-        public string Key { get; set; }
+        public DbSet<Node> Nodes { get; set; }
     }
 }

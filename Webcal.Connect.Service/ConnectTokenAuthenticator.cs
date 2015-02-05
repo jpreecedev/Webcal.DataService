@@ -8,6 +8,7 @@
     using System.IdentityModel.Selectors;
     using System.IdentityModel.Tokens;
     using System.Linq;
+    using System.ServiceModel;
     using Shared;
     using Data;
 
@@ -26,9 +27,11 @@
             {
                 throw new ArgumentNullException("token");
             }
-            if (!IsValidConnectKeys(connectToken.ConnectKeys))
+
+            var authorizationException = IsAuthorized(connectToken.ConnectKeys);
+            if (authorizationException != null)
             {
-                throw new SecurityTokenValidationException("Connect authentication keys are invalid.");
+                throw authorizationException;
             }
 
             var policies = new List<IAuthorizationPolicy>(3)
@@ -41,12 +44,31 @@
             return policies.AsReadOnly();
         }
 
-        private static bool IsValidConnectKeys(IConnectKeys connectKeys)
+        private static Exception IsAuthorized(IConnectKeys connectKeys)
         {
             using (var context = new ConnectContext())
             {
-                return context.Companies.FirstOrDefault(c => c.Key == connectKeys.CompanyKey) != null;
+                var company = context.Companies.FirstOrDefault(c => c.Key == connectKeys.CompanyKey);
+
+                bool companyKeyExists = company != null;
+                if (!companyKeyExists)
+                {
+                    return new FaultException("Connect authentication keys are invalid.");                    
+                }
+
+                bool companyAuthorized = company.IsAuthorized;
+                if (!companyAuthorized)
+                {
+                    return new FaultException("The company is not authorized to use Webcal Connect at this time.");                                        
+                }
+
+                var node = context.Nodes.FirstOrDefault(c => c.Company.Id == company.Id && c.MachineKey == connectKeys.MachineKey);
+                if (node == null || !node.IsAuthorized)
+                {
+                    return new FaultException("Your computer is not currently authorized to use Webcal Connect at this time.");
+                }
             }
+            return null;
         }
 
         private static ConnectTokenAuthorizationPolicy CreateAuthorizationPolicy<T>(string claimType, T resource, string rights)

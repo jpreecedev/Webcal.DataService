@@ -1,22 +1,9 @@
 ﻿namespace Webcal.Connect.Data
 {
     using System.Data.Entity;
-    using System.Linq;
+    using Migrations;
 
-    public class Initializer : CreateDatabaseIfNotExists<ConnectContext>
+    public class Initializer : MigrateDatabaseToLatestVersion<ConnectContext, Configuration>
     {
-        protected override void Seed(ConnectContext context)
-        {
-            if (!context.Companies.Any())
-            {
-                context.Companies.Add(new Company
-                {
-                    Key = "Skillray"
-                });
-
-                context.SaveChanges();
-            }
-
-        }
     }
 }

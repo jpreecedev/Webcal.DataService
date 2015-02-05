@@ -1,13 +1,17 @@
 namespace Webcal.Connect.Service
 {
-    using System;
-    using Connect.Shared;
+    using Shared;
 
     public class ConnectService : BaseConnectService, IConnectService
     {
         public string Echo()
         {
-            return String.Format("Hello. You presented a {0}", FetchClaimValue(ConnectConstants.ConnectLicenseKeyClaim));
+            return "Echo";
+        }
+
+        public void UploadTachographDocument()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
