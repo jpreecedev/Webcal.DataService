@@ -1,6 +1,7 @@
 ﻿namespace Webcal.Connect.Shared.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
 
@@ -13,7 +14,7 @@
         [DataMember]
         public DateTime? Deleted { get; set; }
 
-        [XmlIgnore]
+        [XmlIgnore, NotMapped]
         public bool IsDeleted
         {
             get { return Deleted != null; }

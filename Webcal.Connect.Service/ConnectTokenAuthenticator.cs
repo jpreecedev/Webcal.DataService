@@ -62,8 +62,8 @@
                     return new FaultException("The company is not authorized to use Webcal Connect at this time.");                                        
                 }
 
-                var node = context.Nodes.FirstOrDefault(c => c.Company.Id == company.Id && c.MachineKey == connectKeys.MachineKey);
-                if (node == null || !node.IsAuthorized)
+                var connectUser = context.ConnectUsers.Where(u => u.CompanyKey == connectKeys.CompanyKey).FirstOrDefault(c =>c.MachineKey == connectKeys.MachineKey);
+                if (connectUser == null || !connectUser.IsAuthorized)
                 {
                     return new FaultException("Your computer is not currently authorized to use Webcal Connect at this time.");
                 }

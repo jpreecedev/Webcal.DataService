@@ -4,6 +4,7 @@
     using System.IdentityModel.Claims;
     using System.Linq;
     using System.ServiceModel;
+    using Data;
     using Shared;
 
     public class BaseConnectService

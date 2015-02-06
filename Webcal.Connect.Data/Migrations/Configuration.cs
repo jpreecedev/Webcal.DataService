@@ -2,6 +2,7 @@ namespace Webcal.Connect.Data.Migrations
 {
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Shared;
 
     public sealed class Configuration : DbMigrationsConfiguration<ConnectContext>
     {
@@ -23,13 +24,11 @@ namespace Webcal.Connect.Data.Migrations
 
             context.SaveChanges();
 
-            if (!context.Nodes.Any())
+            if (!context.ConnectUsers.Any())
             {
-                context.Nodes.Add(new Node
+                context.ConnectUsers.Add(new ConnectUser(new ConnectKeys("", 0, "Skillray", "BF98"))
                 {
-                    Company = context.Companies.First(),
-                    IsAuthorized = true,
-                    MachineKey = "BF98"
+                    IsAuthorized = true
                 });
             }
 

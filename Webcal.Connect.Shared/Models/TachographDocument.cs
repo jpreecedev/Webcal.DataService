@@ -1,13 +1,14 @@
 ﻿namespace Webcal.Connect.Shared.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Xml.Serialization;
     using Properties;
 
     [Serializable]
     public class TachographDocument : Document
     {
-        [XmlIgnore]
+        [XmlIgnore, NotMapped]
         public override bool IsNew
         {
             get

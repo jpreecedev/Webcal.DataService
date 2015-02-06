@@ -1,5 +1,6 @@
 namespace Webcal.Connect.Service
 {
+    using Data;
     using Shared;
     using Shared.Models;
 
@@ -12,7 +13,13 @@ namespace Webcal.Connect.Service
 
         public void UploadTachographDocument(TachographDocument tachographDocument)
         {
-            throw new System.NotImplementedException();
+            using (var context = new ConnectContext())
+            {
+                tachographDocument.User = User;
+                context.TachographDocuments.Add(tachographDocument);
+
+                context.SaveChanges();
+            }
         }
     }
 }

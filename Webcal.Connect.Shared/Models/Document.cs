@@ -3,6 +3,7 @@
     using System;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
+    using Data;
 
     [Serializable]
     [KnownType(typeof(TachographDocument))]
@@ -22,6 +23,9 @@
                 OnDocumentTypeChanged(value);
             }
         }
+        
+        [XmlIgnore]
+        public ConnectUser User { get; set; }
 
         public string Office { get; set; }
         public string RegistrationNumber { get; set; }

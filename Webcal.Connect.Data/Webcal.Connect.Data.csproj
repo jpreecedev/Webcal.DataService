@@ -65,12 +65,15 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Webcal.Connect.Shared">
+      <HintPath>..\..\WebCal\bin\Webcal.Connect.Shared.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Company.cs" />
     <Compile Include="ConnectContext.cs" />
+    <Compile Include="ConnectUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Node.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
