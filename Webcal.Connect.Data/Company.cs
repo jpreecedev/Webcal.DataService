@@ -1,9 +1,9 @@
 ﻿namespace Webcal.Connect.Data
 {
-    public class Company
-    {
-        public int Id { get; set; }
+    using Shared.Models;
 
+    public class Company : BaseModel
+    {
         public string Key { get; set; }
 
         public bool IsAuthorized { get; set; }

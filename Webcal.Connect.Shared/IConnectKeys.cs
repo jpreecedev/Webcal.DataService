@@ -7,5 +7,7 @@ namespace Webcal.Connect.Shared
         int LicenseKey { get; set; }
         string CompanyKey { get; set; }
         string MachineKey { get; set; }
+
+        string ConnectKey { get; }
     }
 }

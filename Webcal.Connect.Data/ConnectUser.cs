@@ -4,8 +4,9 @@
     using System.Linq;
     using System.Linq.Expressions;
     using Shared;
+    using Shared.Models;
 
-    public class ConnectUser
+    public class ConnectUser : BaseModel
     {
         private Company _company;
 
@@ -20,9 +21,7 @@
             CompanyKey = connectKeys.CompanyKey;
             MachineKey = connectKeys.MachineKey;
         }
-
-        public int Id { get; set; }
-
+        
         public bool IsAuthorized { get; set; }
 
         public int LicenseKey { get; set; }

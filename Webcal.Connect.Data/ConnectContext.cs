@@ -19,5 +19,7 @@
         public DbSet<UndownloadabilityDocument> UndownloadabilityDocuments { get; set; }
 
         public DbSet<LetterForDecommissioningDocument> LetterForDecommissioningDocuments { get; set; }
+
+        public DbSet<UserPendingAuthorization> UnauthorizedUsers { get; set; }
     }
 }

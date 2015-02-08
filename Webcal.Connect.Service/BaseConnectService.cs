@@ -1,8 +1,10 @@
 ﻿namespace Webcal.Connect.Service
 {
+    using System;
     using System.Collections.Generic;
     using System.IdentityModel.Claims;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.ServiceModel;
     using Data;
     using Shared;
@@ -11,7 +13,13 @@
     {
         public ConnectUser User
         {
-            get { return new ConnectUser(GetConnectKeys()); }
+            get
+            {
+                var connectKeys = GetConnectKeys();
+                var connectUser = Fetch<ConnectUser>(c => c.CompanyKey == connectKeys.CompanyKey && c.MachineKey == connectKeys.MachineKey);
+
+                return connectUser ?? new ConnectUser(connectKeys);
+            }
         }
 
         protected IConnectKeys GetConnectKeys()
@@ -48,6 +56,14 @@
             claimValue = (enumerator.Current.Resource == null) ? null : enumerator.Current.Resource.ToString();
 
             return true;
+        }
+
+        private static T Fetch<T>(Expression<Func<T, bool>> expression) where T : class
+        {
+            using (var context = new ConnectContext())
+            {
+                return context.Set<T>().FirstOrDefault(expression.Compile());
+            }
         }
     }
 }

@@ -13,10 +13,25 @@ namespace Webcal.Connect.Service
 
         public void UploadTachographDocument(TachographDocument tachographDocument)
         {
+            UploadDocument(tachographDocument);
+        }
+
+        public void UploadUndownloadabilityDocument(UndownloadabilityDocument undownloadabilityDocument)
+        {
+            UploadDocument(undownloadabilityDocument);
+        }
+
+        public void UploadLetterForDecommissioningDocument(LetterForDecommissioningDocument letterForDecommissioningDocument)
+        {
+            UploadDocument(letterForDecommissioningDocument);
+        }
+
+        private void UploadDocument<T>(T document) where T : Document
+        {
             using (var context = new ConnectContext())
             {
-                tachographDocument.User = User;
-                context.TachographDocuments.Add(tachographDocument);
+                document.User = User;
+                context.Set<T>().Add(document);
 
                 context.SaveChanges();
             }

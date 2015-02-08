@@ -12,5 +12,11 @@
 
         [OperationContract]
         void UploadTachographDocument(TachographDocument tachographDocument);
+
+        [OperationContract]
+        void UploadUndownloadabilityDocument(UndownloadabilityDocument undownloadabilityDocument);
+
+        [OperationContract]
+        void UploadLetterForDecommissioningDocument(LetterForDecommissioningDocument letterForDecommissioningDocument);
     }
 }

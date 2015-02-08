@@ -17,5 +17,10 @@
         public int LicenseKey { get; set; }
         public string CompanyKey { get; set; }
         public string MachineKey { get; set; }
+
+        public string ConnectKey
+        {
+            get { return string.Format("{0}-{1}-{2}", LicenseKey, MachineKey, CompanyKey); }
+        }
     }
 }
