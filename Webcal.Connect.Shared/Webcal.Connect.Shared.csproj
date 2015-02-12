@@ -93,6 +93,7 @@
     <Compile Include="ConnectSecurityTokenSerializer.cs" />
     <Compile Include="ConnectToken.cs" />
     <Compile Include="ConnectTokenParameters.cs" />
+    <Compile Include="DocumentType.cs" />
     <Compile Include="IConnectBindingHelper.cs" />
     <Compile Include="IConnectDocument.cs" />
     <Compile Include="IConnectKeys.cs" />

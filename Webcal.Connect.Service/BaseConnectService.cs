@@ -30,8 +30,8 @@
 
             return new ConnectKeys(string.Empty, licenseKey, companyKey, machineKey);
         }
-
-        private string FetchClaimValue(string claimType)
+        
+        protected string FetchClaimValue(string claimType)
         {
             foreach (ClaimSet claimSet in ServiceSecurityContext.Current.AuthorizationContext.ClaimSets)
             {

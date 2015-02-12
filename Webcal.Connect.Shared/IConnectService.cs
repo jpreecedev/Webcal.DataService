@@ -18,5 +18,8 @@
 
         [OperationContract]
         void UploadLetterForDecommissioningDocument(LetterForDecommissioningDocument letterForDecommissioningDocument);
+
+        [OperationContract]
+        object Find(string registrationNumber, DocumentType documentType);
     }
 }
