@@ -1,6 +1,5 @@
 namespace Webcal.Connect.Service
 {
-    using System.Data.Entity;
     using System.Linq;
     using System.ServiceModel;
     using Data;
@@ -77,18 +76,26 @@ namespace Webcal.Connect.Service
         {
             using (var context = new ConnectContext())
             {
-                document.User = User;
+                document.UserId = User.Id;
                 context.Set<T>().Add(document);
 
                 context.SaveChanges();
             }
         }
 
-        private static Document FindDocument<T>(DbContext context, string registrationNumber, string companyKey) where T : Document
+        private static Document FindDocument<T>(ConnectContext context, string registrationNumber, string companyKey) where T : Document
         {
-            return context.Set<T>().Where(c => c.RegistrationNumber == registrationNumber && c.User != null && c.User.CompanyKey == companyKey)
-                                   .OrderByDescending(c => c.Created)
-                                   .FirstOrDefault();
+            return context.Set<T>()
+                          .Where(doc => doc.RegistrationNumber == registrationNumber)
+                          .OrderByDescending(doc => doc.Created)
+                          .Join(context.Users, doc => doc.UserId, user => user.Id, (doc, user) => new
+                          {
+                              user.CompanyKey,
+                              Document = doc
+                          })
+                          .Where(b => b.CompanyKey == companyKey)
+                          .Select(a => a.Document)
+                          .FirstOrDefault();
         }
     }
 }
