@@ -99,6 +99,7 @@
     <Compile Include="ConnectConstants.cs" />
     <Compile Include="ConnectKeys.cs" />
     <Compile Include="ConnectRole.cs" />
+    <Compile Include="ConnectRoles.cs" />
     <Compile Include="ConnectSecurityTokenSerializer.cs" />
     <Compile Include="ConnectToken.cs" />
     <Compile Include="ConnectTokenParameters.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="ConnectUserLogin.cs" />
     <Compile Include="ConnectUserRole.cs" />
     <Compile Include="DocumentType.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="IConnectBindingHelper.cs" />
     <Compile Include="IConnectDocument.cs" />
     <Compile Include="IConnectKeys.cs" />

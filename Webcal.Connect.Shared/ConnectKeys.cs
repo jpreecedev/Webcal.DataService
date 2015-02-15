@@ -20,7 +20,7 @@
 
         public string ConnectKey
         {
-            get { return string.Format("{0}-{1}-{2}", LicenseKey, MachineKey, CompanyKey); }
+            get { return string.Format("{0}-{1}-{2}", CompanyKey, MachineKey, LicenseKey ); }
         }
     }
 }

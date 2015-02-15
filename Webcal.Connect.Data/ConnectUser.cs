@@ -42,6 +42,29 @@
             return await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
         }
 
+        public void Parse(string connectKey)
+        {
+            if (string.IsNullOrEmpty(connectKey))
+            {
+                return;
+            }
+
+            var split = connectKey.Split('-');
+            if (split.Length != 3)
+            {
+                return;
+            }
+
+            CompanyKey = split[0];
+            MachineKey = split[1];
+
+            int parsed;
+            if (int.TryParse(split[2], out parsed))
+            {
+                LicenseKey = parsed;
+            }
+        }
+
         private static TResult Fetch<TResult>(Expression<Func<TResult, bool>> expression) where TResult : class
         {
             using (var context = new ConnectContext())
