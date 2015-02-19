@@ -31,7 +31,9 @@
         public DateTime? InspectionDate { get; set; }
         public string Technician { get; set; }
         public string CustomerContact { get; set; }
-       
+
+        public byte[] SerializedData { get; set; }
+
         [XmlIgnore]
         public int UserId { get; set; }
 

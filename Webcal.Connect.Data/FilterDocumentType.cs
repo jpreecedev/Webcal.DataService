@@ -5,6 +5,9 @@
     public enum FilterDocumentType
     {
         Any,
+
+        [Display(Name = "Analogue Tachograph")] AnalogueTachograph,
+
         Tachograph,
         Undownloadability,
 

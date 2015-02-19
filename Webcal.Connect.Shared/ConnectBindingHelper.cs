@@ -7,7 +7,10 @@
     {
         public Binding CreateBinding(SecurityTokenParameters parameters)
         {
-            var httpTransport = new HttpsTransportBindingElement();
+            var httpTransport = new HttpsTransportBindingElement
+            {
+                MaxReceivedMessageSize = 5000000
+            };
 
             var messageSecurity = new SymmetricSecurityBindingElement();
             messageSecurity.EndpointSupportingTokenParameters.SignedEncrypted.Add(parameters);
