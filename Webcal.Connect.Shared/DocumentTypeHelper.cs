@@ -1,6 +1,5 @@
 ﻿namespace Webcal.Connect.Shared
 {
-    using Data;
     using Models;
 
     public static class DocumentTypeHelper

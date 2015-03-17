@@ -1,6 +1,7 @@
 ﻿namespace Webcal.Connect.Shared.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
 
@@ -32,6 +33,7 @@
         public string Technician { get; set; }
         public string CustomerContact { get; set; }
 
+        [MaxLength]
         public byte[] SerializedData { get; set; }
 
         [XmlIgnore]

@@ -5,7 +5,6 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
-    using Data;
     using Microsoft.AspNet.Identity.EntityFramework;
 
     public class BaseUserModel : IdentityUser<int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>, ICloneable

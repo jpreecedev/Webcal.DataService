@@ -1,4 +1,4 @@
-﻿namespace Webcal.Connect.Data
+﻿namespace Webcal.Connect.Shared.Models
 {
     using System.ComponentModel.DataAnnotations;
 

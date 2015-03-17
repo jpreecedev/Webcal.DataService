@@ -4,7 +4,6 @@
     using System.IdentityModel.Selectors;
     using System.IdentityModel.Tokens;
     using System.ServiceModel.Security;
-    using System.ServiceModel.Security.Tokens;
     using System.Xml;
 
     public class ConnectSecurityTokenSerializer : WSSecurityTokenSerializer

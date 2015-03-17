@@ -19,5 +19,7 @@
         public const string ConnectLicenseKeyElementName = "LicenseKey";
         public const string ConnectMachineKeyElementName = "MachineKey";
         public const string ConnectCompanyKeyElementName = "CompanyKey";
+
+        public const string ConnectAdministratonCompany = "Administration";
     }
 }

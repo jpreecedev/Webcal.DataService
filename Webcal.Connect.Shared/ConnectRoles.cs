@@ -2,6 +2,7 @@
 {
     public static class ConnectRoles
     {
-        public const string Admin = "Admin";
+        public const string Admin = "Administrator";
+        public const string StandardUser = "StandardUser";
     }
 }

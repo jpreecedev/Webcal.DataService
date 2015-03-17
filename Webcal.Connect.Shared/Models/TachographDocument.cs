@@ -45,6 +45,7 @@
         public string CardSerialNumber { get; set; }
         public DateTime? CalibrationTime { get; set; }
         public bool IsDigital { get; set; }
+        public bool NewBattery { get; set; }
 
         public void Convert(CalibrationRecord calibrationRecord)
         {

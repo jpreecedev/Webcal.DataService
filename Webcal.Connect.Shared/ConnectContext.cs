@@ -1,9 +1,8 @@
-﻿namespace Webcal.Connect.Data
+﻿namespace Webcal.Connect.Shared
 {
     using System.Data.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Shared;
-    using Shared.Models;
+    using Models;
 
     public class ConnectContext : IdentityDbContext<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>
     {
@@ -23,6 +22,8 @@
         public DbSet<ConnectUserNode> UserNodes { get; set; }
 
         public DbSet<Settings> Settings { get; set; }
+
+        public DbSet<TachoFleetEmail> Emails { get; set; }
 
         public static ConnectContext Create()
         {

@@ -9,10 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Webcal.Connect.Shared</RootNamespace>
     <AssemblyName>Webcal.Connect.Shared</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>77898d67</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>41123e6b</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -86,6 +86,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -97,6 +98,7 @@
   <ItemGroup>
     <Compile Include="ConnectBindingHelper.cs" />
     <Compile Include="ConnectConstants.cs" />
+    <Compile Include="ConnectContext.cs" />
     <Compile Include="ConnectKeys.cs" />
     <Compile Include="ConnectRole.cs" />
     <Compile Include="ConnectRoles.cs" />
@@ -111,14 +113,24 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="IConnectBindingHelper.cs" />
     <Compile Include="IConnectDocument.cs" />
+    <Compile Include="IConnectEmail.cs" />
     <Compile Include="IConnectKeys.cs" />
     <Compile Include="IConnectService.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="Macros\MacroAttribute.cs" />
+    <Compile Include="Macros\MacroHelper.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BaseNotification.cs" />
     <Compile Include="Models\BaseUserModel.cs" />
     <Compile Include="Models\CalibrationRecord.cs" />
+    <Compile Include="Models\ConnectUser.cs" />
+    <Compile Include="Models\ConnectUserNode.cs" />
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\FilterDocumentType.cs" />
     <Compile Include="Models\LetterForDecommissioningDocument.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\TachoFleetEmail.cs" />
     <Compile Include="Models\TachographDocument.cs" />
     <Compile Include="Models\UndownloadabilityDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,16 +139,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserPendingAuthorization.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
     <Content Include="Main Icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Webcal.Connect.Data\Webcal.Connect.Data.csproj">
-      <Project>{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}</Project>
-      <Name>Webcal.Connect.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

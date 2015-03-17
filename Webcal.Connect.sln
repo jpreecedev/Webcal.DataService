@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcal.Connect.Service", "Webcal.Connect.Service\Webcal.Connect.Service.csproj", "{8055AAFC-751E-46E6-B3E2-9D159355D036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcal.Connect.Data", "Webcal.Connect.Data\Webcal.Connect.Data.csproj", "{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcal.Connect.Shared", "Webcal.Connect.Shared\Webcal.Connect.Shared.csproj", "{936A74D0-D67C-4A30-B0C8-6981465CB086}"
 EndProject
 Global
@@ -25,14 +23,6 @@ Global
 		{8055AAFC-751E-46E6-B3E2-9D159355D036}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8055AAFC-751E-46E6-B3E2-9D159355D036}.Release|x86.ActiveCfg = Release|x86
 		{8055AAFC-751E-46E6-B3E2-9D159355D036}.Release|x86.Build.0 = Release|x86
-		{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}.Debug|x86.ActiveCfg = Debug|x86
-		{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}.Debug|x86.Build.0 = Debug|x86
-		{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}.Release|x86.ActiveCfg = Release|x86
-		{BA2A24B6-1FAA-46A6-BD86-73ECA78B7C63}.Release|x86.Build.0 = Release|x86
 		{936A74D0-D67C-4A30-B0C8-6981465CB086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{936A74D0-D67C-4A30-B0C8-6981465CB086}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{936A74D0-D67C-4A30-B0C8-6981465CB086}.Debug|x86.ActiveCfg = Debug|x86

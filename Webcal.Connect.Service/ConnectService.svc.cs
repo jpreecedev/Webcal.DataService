@@ -2,7 +2,6 @@ namespace Webcal.Connect.Service
 {
     using System.Linq;
     using System.ServiceModel;
-    using Data;
     using Shared;
     using Shared.Models;
 
@@ -76,7 +75,7 @@ namespace Webcal.Connect.Service
         {
             using (var context = new ConnectContext())
             {
-                document.UserId = User.Id;
+                document.UserId = UserNode.ConnectUser.Id;
                 context.Set<T>().Add(document);
 
                 context.SaveChanges();
@@ -88,7 +87,7 @@ namespace Webcal.Connect.Service
             return context.Set<T>()
                           .Where(doc => doc.RegistrationNumber == registrationNumber)
                           .OrderByDescending(doc => doc.Created)
-                          .Join(context.Users, doc => doc.UserId, user => user.Id, (doc, user) => new
+                          .Join(context.UserNodes, doc => doc.UserId, user => user.Id, (doc, user) => new
                           {
                               user.CompanyKey,
                               Document = doc

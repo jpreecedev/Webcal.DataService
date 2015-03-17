@@ -11,7 +11,6 @@
     using System.Linq;
     using System.ServiceModel;
     using Shared;
-    using Data;
     using Claim = System.IdentityModel.Claims.Claim;
 
     public class ConnectTokenAuthenticator : SecurityTokenAuthenticator
@@ -52,27 +51,13 @@
 
             using (var context = new ConnectContext())
             {
-                var company = context.Companies.FirstOrDefault(c => c.Key == connectKeys.CompanyKey);
-
-                bool companyKeyExists = company != null;
-                if (!companyKeyExists)
-                {
-                    result = new FaultException("Connect authentication keys are invalid.");
-                }
-
-                bool companyAuthorized = company != null && company.IsAuthorized;
-                if (!companyAuthorized)
-                {
-                    result = new FaultException("The company is not authorized to use Webcal Connect at this time.");
-                }
-
-                var connectUser = context.Users.Where(u => u.CompanyKey == connectKeys.CompanyKey).FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey);
-                if (connectUser == null || !connectUser.IsAuthorized)
+                var connectUserNode = context.UserNodes.Where(u => u.CompanyKey == connectKeys.CompanyKey).FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey);
+                if (connectUserNode == null || !connectUserNode.IsAuthorized)
                 {
                     result = new FaultException("Your computer is not currently authorized to use Webcal Connect at this time.");
                 }
 
-                if (result != null)
+                if (result != null && connectUserNode == null)
                 {
                     AddUnauthorizedUser(context, connectKeys);
                 }

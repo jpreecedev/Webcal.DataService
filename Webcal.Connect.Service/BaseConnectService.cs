@@ -1,24 +1,25 @@
 ﻿namespace Webcal.Connect.Service
 {
-    using System;
     using System.Collections.Generic;
     using System.IdentityModel.Claims;
     using System.Linq;
-    using System.Linq.Expressions;
     using System.ServiceModel;
-    using Data;
     using Shared;
+    using Shared.Models;
 
     public class BaseConnectService
     {
-        public ConnectUser User
+        public ConnectUserNode UserNode
         {
             get
             {
                 var connectKeys = GetConnectKeys();
-                var connectUser = Fetch<ConnectUser>(c => c.CompanyKey == connectKeys.CompanyKey && c.MachineKey == connectKeys.MachineKey);
 
-                return connectUser ?? new ConnectUser(connectKeys);
+                using (var context = new ConnectContext())
+                {
+                    var connectUser = context.UserNodes.Include("ConnectUser").FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey && c.MachineKey == connectKeys.MachineKey);
+                    return connectUser ?? new ConnectUserNode(connectKeys);
+                }
             }
         }
 
@@ -44,7 +45,7 @@
             return "Unknown";
         }
 
-        private bool TryGetStringClaimValue(ClaimSet claimSet, string claimType, out string claimValue)
+        private static bool TryGetStringClaimValue(ClaimSet claimSet, string claimType, out string claimValue)
         {
             claimValue = null;
             IEnumerable<Claim> matchingClaims = claimSet.FindClaims(claimType, Rights.PossessProperty);
@@ -56,14 +57,6 @@
             claimValue = (enumerator.Current.Resource == null) ? null : enumerator.Current.Resource.ToString();
 
             return true;
-        }
-
-        private static T Fetch<T>(Expression<Func<T, bool>> expression) where T : class
-        {
-            using (var context = new ConnectContext())
-            {
-                return context.Set<T>().FirstOrDefault(expression.Compile());
-            }
         }
     }
 }

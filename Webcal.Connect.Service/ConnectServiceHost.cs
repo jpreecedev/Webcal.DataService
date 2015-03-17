@@ -7,7 +7,6 @@ namespace Webcal.Connect.Service
     using System.ServiceModel.Channels;
     using System.ServiceModel.Description;
     using Shared;
-    using Data;
 
     public class ConnectServiceHost : ServiceHost
     {
