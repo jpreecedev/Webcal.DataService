@@ -29,16 +29,20 @@ namespace Webcal.Connect.Shared.Migrations
             context.Roles.Add(standardUserRole);
             context.SaveChanges();
 
-            var userManager = new UserManager<ConnectUser, int>(new UserStore<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>(new ConnectContext()));
+            var userManager = new UserManager<ConnectUser, int>(new UserStore<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>(context));
             var connectUser = new ConnectUser
             {
                 CompanyKey = ConnectConstants.ConnectAdministratonCompany,
-                Email = "admin@tachofleet.com",
-                UserName = "admin@tachofleet.com",
+                Email = "admin@webcalconnect.com",
+                UserName = "admin@webcalconnect.com",
                 IsAuthorized = true
             };
+            context.SaveChanges();
 
             userManager.Create(connectUser, "Tacho255");
+            context.Users.AddOrUpdate(connectUser);
+            context.SaveChanges();
+
             userManager.AddToRole(connectUser.Id, ConnectRoles.Admin);
 
             context.Settings.Add(new Settings

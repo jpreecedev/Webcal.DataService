@@ -1,6 +1,7 @@
 namespace Webcal.Connect.Service
 {
     using System;
+    using System.Collections.Generic;
     using System.ServiceModel;
     using System.ServiceModel.Activation;
 
@@ -8,7 +9,10 @@ namespace Webcal.Connect.Service
     {
         public override ServiceHostBase CreateServiceHost(string constructorString, Uri[] baseAddresses)
         {
-            return new ConnectServiceHost(baseAddresses);
+            return new ConnectServiceHost(new List<Uri>
+            {
+                new Uri("https://www.webcalconnect.com")
+            }.ToArray());
         }
     }
 }
