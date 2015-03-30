@@ -59,15 +59,5 @@ namespace Connect.Service.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] webcalconnect_com {
-            get {
-                object obj = ResourceManager.GetObject("webcalconnect_com", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

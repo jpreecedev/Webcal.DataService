@@ -5,6 +5,7 @@ namespace Connect.Service
     using Shared;
     using Shared.Models;
 
+    [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)]
     public class ConnectService : BaseConnectService, IConnectService
     {
         public string Echo()

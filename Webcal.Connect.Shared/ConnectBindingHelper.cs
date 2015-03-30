@@ -20,6 +20,8 @@
                 InclusionMode = SecurityTokenInclusionMode.Never
             };
             messageSecurity.ProtectionTokenParameters = x509ProtectionParameters;
+            messageSecurity.EnableUnsecuredResponse = true;
+            messageSecurity.AllowInsecureTransport = true;
 
             return new CustomBinding(messageSecurity, httpTransport);
         }

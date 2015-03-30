@@ -7,7 +7,7 @@
     public class ConnectContext : IdentityDbContext<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>
     {
         public ConnectContext()
-            : base("Server=10.168.1.53;Database=webcaldb;User Id=webcaldb; Password=7ZY7K8De;")
+            : base(ConnectConstants.ConnectionString)
         {
             Configuration.LazyLoadingEnabled = false;
         }
