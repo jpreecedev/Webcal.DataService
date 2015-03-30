@@ -1,4 +1,4 @@
-namespace Webcal.Connect.Shared.Migrations
+namespace Connect.Shared.Migrations
 {
     using System.Data.Entity.Migrations;
     using System.Linq;

@@ -1,4 +1,4 @@
-﻿namespace Webcal.Connect.Shared.Macros
+﻿namespace Connect.Shared.Macros
 {
     using System;
     using System.Linq;

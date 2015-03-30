@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcal.Connect.Service", "Webcal.Connect.Service\Webcal.Connect.Service.csproj", "{8055AAFC-751E-46E6-B3E2-9D159355D036}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connect.Service", "Webcal.Connect.Service\Connect.Service.csproj", "{8055AAFC-751E-46E6-B3E2-9D159355D036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcal.Connect.Shared", "Webcal.Connect.Shared\Webcal.Connect.Shared.csproj", "{936A74D0-D67C-4A30-B0C8-6981465CB086}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connect.Shared", "Webcal.Connect.Shared\Connect.Shared.csproj", "{936A74D0-D67C-4A30-B0C8-6981465CB086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

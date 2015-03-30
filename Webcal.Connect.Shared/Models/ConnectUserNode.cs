@@ -1,4 +1,4 @@
-namespace Webcal.Connect.Shared.Models
+namespace Connect.Shared.Models
 {
     using Shared;
 

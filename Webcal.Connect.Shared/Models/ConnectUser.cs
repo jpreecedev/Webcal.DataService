@@ -1,4 +1,4 @@
-﻿namespace Webcal.Connect.Shared.Models
+﻿namespace Connect.Shared.Models
 {
     using System.Security.Claims;
     using System.Threading.Tasks;

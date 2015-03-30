@@ -1,4 +1,4 @@
-﻿namespace Webcal.Connect.Service
+﻿namespace Connect.Service
 {
     using System;
     using System.Collections.Generic;
@@ -54,7 +54,7 @@
                 var connectUserNode = context.UserNodes.Where(u => u.CompanyKey == connectKeys.CompanyKey).FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey);
                 if (connectUserNode == null || !connectUserNode.IsAuthorized)
                 {
-                    result = new FaultException("Your computer is not currently authorized to use Webcal Connect at this time.");
+                    result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
                 }
 
                 if (result != null && connectUserNode == null)

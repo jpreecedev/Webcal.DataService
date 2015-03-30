@@ -1,4 +1,4 @@
-﻿namespace Webcal.Connect.Shared
+﻿namespace Connect.Shared
 {
     using System;
 

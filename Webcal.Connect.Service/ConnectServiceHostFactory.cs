@@ -1,4 +1,4 @@
-namespace Webcal.Connect.Service
+namespace Connect.Service
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace Webcal.Connect.Service
         {
             return new ConnectServiceHost(new List<Uri>
             {
-                new Uri("https://www.webcalconnect.com")
+                new Uri("https://www.webcalconnect.com/service/")
             }.ToArray());
         }
     }

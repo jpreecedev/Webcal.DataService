@@ -1,4 +1,4 @@
-﻿namespace Webcal.Connect.Data
+﻿namespace Connect.Data
 {
     using System;
     using System.Runtime.Caching;

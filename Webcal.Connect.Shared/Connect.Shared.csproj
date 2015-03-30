@@ -7,8 +7,8 @@
     <ProjectGuid>{936A74D0-D67C-4A30-B0C8-6981465CB086}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Webcal.Connect.Shared</RootNamespace>
-    <AssemblyName>Webcal.Connect.Shared</AssemblyName>
+    <RootNamespace>Connect.Shared</RootNamespace>
+    <AssemblyName>Connect.Shared</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

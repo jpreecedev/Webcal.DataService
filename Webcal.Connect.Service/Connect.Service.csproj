@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Webcal.Connect.Service</RootNamespace>
-    <AssemblyName>Webcal.Connect.Service</AssemblyName>
+    <RootNamespace>Connect.Service</RootNamespace>
+    <AssemblyName>Connect.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <UseIISExpress>true</UseIISExpress>
@@ -171,9 +171,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Webcal.Connect.Shared\Webcal.Connect.Shared.csproj">
+    <ProjectReference Include="..\Webcal.Connect.Shared\Connect.Shared.csproj">
       <Project>{936A74D0-D67C-4A30-B0C8-6981465CB086}</Project>
-      <Name>Webcal.Connect.Shared</Name>
+      <Name>Connect.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

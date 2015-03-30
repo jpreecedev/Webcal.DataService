@@ -1,8 +1,8 @@
-﻿namespace Webcal.Connect.Shared
+﻿namespace Connect.Shared
 {
     public class ConnectConstants
     {
-        public const string ConnectNamespace = "https://webcal-connect/";
+        public const string ConnectNamespace = "https://connect/";
 
         public const string ConnectLicenseKeyClaim = ConnectNamespace + "Claims/LicenseKey";
         public const string ConnectMachineKeyClaim = ConnectNamespace + "Claims/MachineKey";

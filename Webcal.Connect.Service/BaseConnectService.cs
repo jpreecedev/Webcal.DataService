@@ -1,4 +1,4 @@
-﻿namespace Webcal.Connect.Service
+﻿namespace Connect.Service
 {
     using System.Collections.Generic;
     using System.IdentityModel.Claims;
