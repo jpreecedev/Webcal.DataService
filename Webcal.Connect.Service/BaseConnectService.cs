@@ -6,21 +6,51 @@
     using System.ServiceModel;
     using Shared;
     using Shared.Models;
+    using System.Data.Entity;
 
     public class BaseConnectService
     {
-        public ConnectUserNode UserNode
+        public ConnectUserNode GetUserNode()
         {
-            get
+            using (var context = new ConnectContext())
             {
-                var connectKeys = GetConnectKeys();
-
-                using (var context = new ConnectContext())
-                {
-                    var connectUser = context.UserNodes.Include("ConnectUser").FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey && c.MachineKey == connectKeys.MachineKey);
-                    return connectUser ?? new ConnectUserNode(connectKeys);
-                }
+                return GetUserNode(context);
             }
+        }
+
+        public ConnectUserNode GetUserNode(ConnectContext context)
+        {
+            var connectKeys = GetConnectKeys();
+            var connectUser = context.UserNodes.Include(x => x.ConnectUser).FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey && c.MachineKey == connectKeys.MachineKey);
+            return connectUser ?? new ConnectUserNode(connectKeys);
+        }
+
+        public int GetUserId()
+        {
+            using (var context = new ConnectContext())
+            {
+                return GetUserId(context);
+            }
+        }
+
+        public int GetUserId(ConnectContext context)
+        {
+            var connectKeys = GetConnectKeys();
+
+            var connectUser = context.UserNodes.Include(x=>x.ConnectUser).Select(c => new
+            {
+                c.ConnectUser.Id,
+                c.CompanyKey,
+                c.MachineKey
+            })
+            .FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey && c.MachineKey == connectKeys.MachineKey);
+
+            if (connectUser != null)
+            {
+                return connectUser.Id;
+            }
+
+            return -1;
         }
 
         protected IConnectKeys GetConnectKeys()
@@ -31,7 +61,7 @@
 
             return new ConnectKeys(string.Empty, licenseKey, companyKey, machineKey);
         }
-        
+
         protected string FetchClaimValue(string claimType)
         {
             foreach (ClaimSet claimSet in ServiceSecurityContext.Current.AuthorizationContext.ClaimSets)

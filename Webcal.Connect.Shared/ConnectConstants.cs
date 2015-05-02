@@ -4,13 +4,18 @@
 
     public class ConnectConstants
     {
-        //public const string BaseUrl = "https://webcal-connect.local/";
-        //public const string ConnectionString = "Server=.;Database=WebcalConnect;User Id=webcal; Password=password;";
-        //public static byte[] DefaultCertificate = Resources.Local_Certificate;
+#if DEBUG
 
-        //public const string BaseUrl = "https://www.webcalconnect.com/service/";
-        //public const string ConnectionString = "Server=10.168.1.53;Database=webcaldb;User Id=webcaldb; Password=7ZY7K8De;";
-        //public static byte[] DefaultCertificate = Resources.Live_Certificate;
+        public const string BaseUrl = "http://webcal-connect.local/";
+        public const string ConnectionString = "Server=.;Database=WebcalConnect;User Id=webcal; Password=password;";
+        public static byte[] DefaultCertificate = Resources.Local_Certificate;
+        public const string CertificatePassword = "";
+#else
+        public const string BaseUrl = "http://www.webcalconnect.com/service/";
+        public const string ConnectionString = "Server=10.168.1.53;Database=webcaldb;User Id=webcaldb; Password=7ZY7K8De;";
+        public static byte[] DefaultCertificate = Resources.Live_Certificate;
+        public const string CertificatePassword = "abc123";
+#endif
 
         public const string ConnectNamespace = "https://connect/";
 

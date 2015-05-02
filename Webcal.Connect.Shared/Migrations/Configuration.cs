@@ -22,11 +22,9 @@ namespace Connect.Shared.Migrations
                 return;
             }
 
-            var adminRole = new ConnectRole(ConnectRoles.Admin);
-            var standardUserRole = new ConnectRole(ConnectRoles.StandardUser);
-
-            context.Roles.Add(adminRole);
-            context.Roles.Add(standardUserRole);
+            context.Roles.Add(new ConnectRole(ConnectRoles.Admin));
+            context.Roles.Add(new ConnectRole(ConnectRoles.TachographCentre));
+            context.Roles.Add(new ConnectRole(ConnectRoles.Operator));
             context.SaveChanges();
 
             var userManager = new UserManager<ConnectUser, int>(new UserStore<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>(context));

@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>e0eb5231</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>f0a19e33</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -71,15 +73,11 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="PropertyChanged">
-      <HintPath>..\packages\PropertyChanged.Fody.1.49.0\Lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -110,12 +108,12 @@
     <Compile Include="ConnectUserRole.cs" />
     <Compile Include="DocumentType.cs" />
     <Compile Include="DocumentTypeHelper.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="IConnectBindingHelper.cs" />
     <Compile Include="IConnectDocument.cs" />
     <Compile Include="IConnectEmail.cs" />
     <Compile Include="IConnectKeys.cs" />
     <Compile Include="IConnectService.cs" />
+    <Compile Include="ICustomerContact.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="Macros\MacroAttribute.cs" />
     <Compile Include="Macros\MacroHelper.cs" />
@@ -124,12 +122,15 @@
     <Compile Include="Models\BaseNotification.cs" />
     <Compile Include="Models\BaseUserModel.cs" />
     <Compile Include="Models\CalibrationRecord.cs" />
+    <Compile Include="Models\CustomerContact.cs" />
     <Compile Include="Models\ConnectUser.cs" />
     <Compile Include="Models\ConnectUserNode.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\FilterDocumentType.cs" />
     <Compile Include="Models\LetterForDecommissioningDocument.cs" />
+    <Compile Include="Models\LinkedVehicle.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\TachoCentreOperator.cs" />
     <Compile Include="Models\TachoFleetEmail.cs" />
     <Compile Include="Models\TachographDocument.cs" />
     <Compile Include="Models\UndownloadabilityDocument.cs" />
@@ -147,9 +148,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\webcal-connect.pfx" />
-    <None Include="Resources\webcalconnect.com.pfx" />
+    <None Include="Resources\webcalconnect.pfx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -159,7 +162,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "C:\Source\WebCal\bin" /s /i /y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "C:\Source\TachographReader\bin" /s /i /y</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Fody.1.28.1\build\Fody.targets" Condition="Exists('..\packages\Fody.1.28.1\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

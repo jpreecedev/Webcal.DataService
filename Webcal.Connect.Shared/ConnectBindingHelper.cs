@@ -5,24 +5,41 @@
 
     public class ConnectBindingHelper : IConnectBindingHelper
     {
-        public Binding CreateBinding(SecurityTokenParameters parameters)
+        public Binding CreateBinding()
         {
-            var httpTransport = new HttpsTransportBindingElement
+            var httpTransport = new HttpTransportBindingElement
             {
-                MaxReceivedMessageSize = 5000000
+                MaxReceivedMessageSize = 10000000
             };
 
             var messageSecurity = new SymmetricSecurityBindingElement();
-            messageSecurity.EndpointSupportingTokenParameters.SignedEncrypted.Add(parameters);
+            messageSecurity.EndpointSupportingTokenParameters.SignedEncrypted.Add(new ConnectTokenParameters());
+            
+            var x509ProtectionParameters = new X509SecurityTokenParameters
+            {
+                InclusionMode = SecurityTokenInclusionMode.Never
+            };
+
+            messageSecurity.ProtectionTokenParameters = x509ProtectionParameters;
+            return new CustomBinding(messageSecurity, httpTransport);
+        }
+
+        public Binding CreateHttpsBinding()
+        {
+            var httpTransport = new HttpsTransportBindingElement
+            {
+                MaxReceivedMessageSize = 10000000
+            };
+
+            var messageSecurity = new SymmetricSecurityBindingElement();
+            messageSecurity.EndpointSupportingTokenParameters.SignedEncrypted.Add(new ConnectTokenParameters());
 
             var x509ProtectionParameters = new X509SecurityTokenParameters
             {
                 InclusionMode = SecurityTokenInclusionMode.Never
             };
-            messageSecurity.ProtectionTokenParameters = x509ProtectionParameters;
-            messageSecurity.EnableUnsecuredResponse = true;
-            messageSecurity.AllowInsecureTransport = true;
 
+            messageSecurity.ProtectionTokenParameters = x509ProtectionParameters;
             return new CustomBinding(messageSecurity, httpTransport);
         }
     }

@@ -36,11 +36,11 @@
             }
 
             var policies = new List<IAuthorizationPolicy>(3)
-            {
-                CreateAuthorizationPolicy(ConnectConstants.ConnectLicenseKeyClaim, connectToken.ConnectKeys.LicenseKey, Rights.PossessProperty),
-                CreateAuthorizationPolicy(ConnectConstants.ConnectCompanyKeyClaim, connectToken.ConnectKeys.CompanyKey, Rights.PossessProperty),
-                CreateAuthorizationPolicy(ConnectConstants.ConnectMachineKeyClaim, connectToken.ConnectKeys.MachineKey, Rights.PossessProperty),
-            };
+        {
+            CreateAuthorizationPolicy(ConnectConstants.ConnectLicenseKeyClaim, connectToken.ConnectKeys.LicenseKey, Rights.PossessProperty),
+            CreateAuthorizationPolicy(ConnectConstants.ConnectMachineKeyClaim, connectToken.ConnectKeys.MachineKey, Rights.PossessProperty),
+            CreateAuthorizationPolicy(ConnectConstants.ConnectCompanyKeyClaim, connectToken.ConnectKeys.CompanyKey, Rights.PossessProperty),
+        };
 
             return policies.AsReadOnly();
         }
@@ -51,7 +51,7 @@
 
             using (var context = new ConnectContext())
             {
-                var connectUserNode = context.UserNodes.Where(u => u.CompanyKey == connectKeys.CompanyKey).FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey);
+                var connectUserNode = context.UserNodes.FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey);
                 if (connectUserNode == null || !connectUserNode.IsAuthorized)
                 {
                     result = new FaultException("Your computer is not currently authorized to use Connect at this time.");

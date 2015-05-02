@@ -9,8 +9,8 @@
         string Subject { get; set; }
         string Body { get; set; }
         string EmailType { get; set; }
-        DateTime From { get; set; }
-        DateTime To { get; set; }
+        DateTime? From { get; set; }
+        DateTime? To { get; set; }
         ConnectUser User { get; set; }
     }
 }

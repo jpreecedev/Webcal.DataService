@@ -26,6 +26,12 @@
 
         public DbSet<TachoFleetEmail> Emails { get; set; }
 
+        public DbSet<TachoCentreOperator> TachoCentreOperators { get; set; }
+
+        public DbSet<CustomerContact> CustomerContacts { get; set; }
+
+        public DbSet<LinkedVehicle> LinkedVehicles { get; set; }
+
         public static ConnectContext Create()
         {
             return new ConnectContext();

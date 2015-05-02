@@ -21,5 +21,11 @@
 
         [OperationContract]
         object Find(string registrationNumber, DocumentType documentType);
+
+        [OperationContract]
+        void UploadCustomerContact(CustomerContact customerContact);
+
+        [OperationContract]
+        CustomerContact[] FindExistingCustomerContact(string customerName);
     }
 }

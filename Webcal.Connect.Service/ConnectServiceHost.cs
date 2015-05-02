@@ -2,10 +2,8 @@ namespace Connect.Service
 {
     using System;
     using System.Data.Entity;
-    using System.Security.Cryptography;
     using System.Security.Cryptography.X509Certificates;
     using System.ServiceModel;
-    using System.ServiceModel.Channels;
     using System.ServiceModel.Description;
     using Shared;
 
@@ -24,22 +22,22 @@ namespace Connect.Service
 
         protected override void InitializeRuntime()
         {
-            // Create a credit card service credentials and add it to the behaviors.
-            var serviceCredentials = new ConnectServiceCredentials();
+            var baseUri = new Uri(ConnectConstants.BaseUrl);
+            var serviceUri = new Uri(baseUri, "ConnectService.svc");
 
-            var certificate = new X509Certificate2(ConnectConstants.DefaultCertificate);
-            serviceCredentials.ServiceCertificate.Certificate = certificate;
+            Description.Behaviors.Remove((typeof (ServiceCredentials)));
 
-            Description.Behaviors.Remove((typeof(ServiceCredentials)));
-            Description.Behaviors.Add(serviceCredentials);
+            var serviceCredential = new ConnectServiceCredentials();
+            serviceCredential.ServiceCertificate.Certificate = new X509Certificate2(ConnectConstants.DefaultCertificate, ConnectConstants.CertificatePassword, X509KeyStorageFlags.MachineKeySet);
+            Description.Behaviors.Add(serviceCredential);
+
+            var behaviour = new ServiceMetadataBehavior {HttpGetEnabled = true, HttpsGetEnabled = false};
+            Description.Behaviors.Add(behaviour);
+
             Description.Behaviors.Find<ServiceDebugBehavior>().IncludeExceptionDetailInFaults = true;
-            Description.Behaviors.Find<ServiceDebugBehavior>().HttpsHelpPageUrl = new Uri(ConnectConstants.BaseUrl + "ConnectService.svc");
+            Description.Behaviors.Find<ServiceDebugBehavior>().HttpHelpPageUrl = serviceUri;
 
-            Description.Endpoints.Clear();
-
-            // Register a credit card binding for the endpoint.
-            Binding binding = new ConnectBindingHelper().CreateBinding(new ConnectTokenParameters());
-            AddServiceEndpoint(typeof(IConnectService), binding, string.Empty);
+            AddServiceEndpoint(typeof (IConnectService), new ConnectBindingHelper().CreateBinding(), string.Empty);
 
             base.InitializeRuntime();
         }

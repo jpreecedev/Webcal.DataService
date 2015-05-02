@@ -61,14 +61,40 @@ namespace Connect.Service
 
                 if ((documentType & DocumentType.LetterForDecommissioning) == DocumentType.LetterForDecommissioning)
                 {
-                    var letterForDecommissioningDocument = FindDocument<LetterForDecommissioningDocument>(context, registrationNumber, companyKey);
-                    if (letterForDecommissioningDocument != null)
-                    {
-                        return letterForDecommissioningDocument;
-                    }
+                    return FindDocument<LetterForDecommissioningDocument>(context, registrationNumber, companyKey);
                 }
 
-                throw new FaultException("Given type is not supported");
+                return null;
+            }
+        }
+
+        public void UploadCustomerContact(CustomerContact customerContact)
+        {
+            using (var context = new ConnectContext())
+            {
+                context.CustomerContacts.Add(customerContact);
+                context.SaveChanges();
+            }
+        }
+
+        public CustomerContact[] FindExistingCustomerContact(string customerName)
+        {
+            if (string.IsNullOrEmpty(customerName))
+            {
+                return null;
+            }
+
+            customerName = customerName.Trim().ToLower().Replace(" ", "").Replace(".", "").Replace("-", "");
+
+            if (customerName.Length < 3)
+            {
+                return null;
+            }
+            
+            using (var context = new ConnectContext())
+            {
+                var a = context.CustomerContacts.Where(c => c.Name != null && c.Name.Trim().ToLower().Replace(" ", "").Replace(".", "").Replace("-", "").StartsWith(customerName)).ToArray();
+                return a;
             }
         }
 
@@ -76,7 +102,7 @@ namespace Connect.Service
         {
             using (var context = new ConnectContext())
             {
-                document.UserId = UserNode.ConnectUser.Id;
+                document.UserId = GetUserId(context);
                 context.Set<T>().Add(document);
 
                 context.SaveChanges();

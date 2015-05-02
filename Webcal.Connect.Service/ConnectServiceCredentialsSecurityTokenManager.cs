@@ -1,10 +1,10 @@
 ﻿namespace Connect.Service
 {
     using System.IdentityModel.Selectors;
+    using System.ServiceModel;
     using System.ServiceModel.Description;
     using System.ServiceModel.Security;
-    using Connect;
-    using Connect.Shared;
+    using Shared;
 
     public class ConnectServiceCredentialsSecurityTokenManager : ServiceCredentialsSecurityTokenManager
     {
