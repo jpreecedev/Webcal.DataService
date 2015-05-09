@@ -3,6 +3,7 @@
     using System.Data.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
+    using Models.License;
 
     public class ConnectContext : IdentityDbContext<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>
     {
@@ -31,6 +32,10 @@
         public DbSet<CustomerContact> CustomerContacts { get; set; }
 
         public DbSet<LinkedVehicle> LinkedVehicles { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
+
+        public DbSet<License> Licenses { get; set; }
 
         public static ConnectContext Create()
         {

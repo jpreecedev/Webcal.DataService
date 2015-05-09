@@ -122,12 +122,14 @@
     <Compile Include="Models\BaseNotification.cs" />
     <Compile Include="Models\BaseUserModel.cs" />
     <Compile Include="Models\CalibrationRecord.cs" />
+    <Compile Include="Models\License\Client.cs" />
     <Compile Include="Models\CustomerContact.cs" />
     <Compile Include="Models\ConnectUser.cs" />
     <Compile Include="Models\ConnectUserNode.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\FilterDocumentType.cs" />
     <Compile Include="Models\LetterForDecommissioningDocument.cs" />
+    <Compile Include="Models\License\License.cs" />
     <Compile Include="Models\LinkedVehicle.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\TachoCentreOperator.cs" />
