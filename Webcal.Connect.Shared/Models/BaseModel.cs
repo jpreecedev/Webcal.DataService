@@ -20,6 +20,12 @@
             get { return Deleted != null; }
         }
 
+        [XmlIgnore, NotMapped]
+        public bool IsNewEntity
+        {
+            get { return Id == 0; }
+        }
+
         public virtual object Clone()
         {
             return MemberwiseClone();

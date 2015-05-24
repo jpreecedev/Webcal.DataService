@@ -36,11 +36,11 @@
             }
 
             var policies = new List<IAuthorizationPolicy>(3)
-        {
-            CreateAuthorizationPolicy(ConnectConstants.ConnectLicenseKeyClaim, connectToken.ConnectKeys.LicenseKey, Rights.PossessProperty),
-            CreateAuthorizationPolicy(ConnectConstants.ConnectMachineKeyClaim, connectToken.ConnectKeys.MachineKey, Rights.PossessProperty),
-            CreateAuthorizationPolicy(ConnectConstants.ConnectCompanyKeyClaim, connectToken.ConnectKeys.CompanyKey, Rights.PossessProperty),
-        };
+            {
+                CreateAuthorizationPolicy(ConnectConstants.ConnectLicenseKeyClaim, connectToken.ConnectKeys.LicenseKey, Rights.PossessProperty),
+                CreateAuthorizationPolicy(ConnectConstants.ConnectMachineKeyClaim, connectToken.ConnectKeys.MachineKey, Rights.PossessProperty),
+                CreateAuthorizationPolicy(ConnectConstants.ConnectCompanyKeyClaim, connectToken.ConnectKeys.CompanyKey, Rights.PossessProperty),
+            };
 
             return policies.AsReadOnly();
         }
@@ -49,17 +49,25 @@
         {
             Exception result = null;
 
-            using (var context = new ConnectContext())
+            if (!LicenseManager.IsValid(connectKeys.LicenseKey.ToString()))
             {
-                var connectUserNode = context.UserNodes.FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey);
-                if (connectUserNode == null || !connectUserNode.IsAuthorized)
-                {
-                    result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
-                }
+                result = new FaultException("The license key is invalid or has expired.");
+            }
 
-                if (result != null && connectUserNode == null)
+            if (result == null)
+            {
+                using (var context = new ConnectContext())
                 {
-                    AddUnauthorizedUser(context, connectKeys);
+                    var connectUserNode = context.UserNodes.FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey && c.CompanyKey == connectKeys.CompanyKey);
+                    if (connectUserNode == null || !connectUserNode.IsAuthorized)
+                    {
+                        result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
+                    }
+
+                    if (result != null && connectUserNode == null)
+                    {
+                        AddUnauthorizedUser(context, connectKeys);
+                    }
                 }
             }
 
