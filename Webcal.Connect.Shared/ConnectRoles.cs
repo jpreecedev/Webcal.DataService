@@ -6,16 +6,15 @@
     {
         public const string Admin = "Administrator";
         public const string TachographCentre = "TachographCentre";
-        public const string Operator = "Operator";
 
         public static string[] AllExceptAdmin
         {
-            get { return new[] {TachographCentre, Operator}; }
+            get { return new[] {TachographCentre}; }
         }
 
         public static string[] All
         {
-            get { return new[] {Admin, TachographCentre, Operator}; }
+            get { return new[] {Admin, TachographCentre}; }
         }
 
         public static string[] GetHigherRoles(string startingRole)
@@ -25,11 +24,7 @@
             switch (startingRole)
             {
                 case Admin:
-                    roles.AddRange(new[] {TachographCentre, Operator});
-                    break;
-
-                case TachographCentre:
-                    roles.Add(Operator);
+                    roles.AddRange(new[] {TachographCentre});
                     break;
             }
 

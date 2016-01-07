@@ -7,7 +7,7 @@
 #if DEBUG
 
         public const string BaseUrl = "http://webcal-connect.local/";
-        public const string ConnectionString = "Server=.;Database=WebcalConnect;User Id=webcal; Password=password;";
+        public const string ConnectionString = "Server=.;Database=WebcalConnect;User Id=sa; Password=password123@;";
         public static byte[] DefaultCertificate = Resources.Local_Certificate;
         public const string CertificatePassword = "";
 #else
@@ -35,6 +35,6 @@
         public const string ConnectMachineKeyElementName = "MachineKey";
         public const string ConnectCompanyKeyElementName = "CompanyKey";
 
-        public const string ConnectAdministratonCompany = "Administration";
+        public const string ConnectAdministratonCompany = "Skillray";
     }
 }

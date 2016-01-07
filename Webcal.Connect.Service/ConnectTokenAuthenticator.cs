@@ -1,4 +1,7 @@
-﻿namespace Connect.Service
+﻿using System.Data.Entity;
+using Connect.Shared.Models;
+
+namespace Connect.Service
 {
     using System;
     using System.Collections.Generic;
@@ -58,15 +61,32 @@
             {
                 using (var context = new ConnectContext())
                 {
-                    var connectUserNode = context.UserNodes.FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey && c.CompanyKey == connectKeys.CompanyKey);
-                    if (connectUserNode == null || !connectUserNode.IsAuthorized)
+                    var company = context.Users.FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey);
+                    if (company == null)
                     {
                         result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
                     }
 
-                    if (result != null && connectUserNode == null)
+                    if (result == null)
                     {
-                        AddUnauthorizedUser(context, connectKeys);
+                        var connectUserNode = context.UserNodes.FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey && c.CompanyKey == connectKeys.CompanyKey);
+                        if (connectUserNode == null)
+                        {
+                            var connectUser = context.Users.FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey);
+                            if (connectUser == null)
+                            {
+                                result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
+                                return result;
+                            }
+
+                            context.UserNodes.Add(new ConnectUserNode(connectKeys) {IsAuthorized = true, ConnectUser = connectUser});
+                            context.SaveChanges();
+                            return null;
+                        }
+                        if (!connectUserNode.IsAuthorized)
+                        {
+                            result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
+                        }
                     }
                 }
             }

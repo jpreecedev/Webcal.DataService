@@ -13,6 +13,8 @@
 		
 		public string CompanyKey { get; set; }
 
+        public int LicenseKey { get; set; }
+
         public CustomerContact CustomerContact { get; set; }
         
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ConnectUser, int> manager)

@@ -24,7 +24,6 @@ namespace Connect.Shared.Migrations
 
             context.Roles.Add(new ConnectRole(ConnectRoles.Admin));
             context.Roles.Add(new ConnectRole(ConnectRoles.TachographCentre));
-            context.Roles.Add(new ConnectRole(ConnectRoles.Operator));
             context.SaveChanges();
 
             var userManager = new UserManager<ConnectUser, int>(new UserStore<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>(context));
@@ -33,7 +32,8 @@ namespace Connect.Shared.Migrations
                 CompanyKey = ConnectConstants.ConnectAdministratonCompany,
                 Email = "admin@webcalconnect.com",
                 UserName = "admin@webcalconnect.com",
-                IsAuthorized = true
+                IsAuthorized = true,
+                LicenseKey = 0
             };
             context.SaveChanges();
 
