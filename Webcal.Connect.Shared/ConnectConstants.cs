@@ -22,6 +22,7 @@
         public const string ConnectLicenseKeyClaim = ConnectNamespace + "Claims/LicenseKey";
         public const string ConnectMachineKeyClaim = ConnectNamespace + "Claims/MachineKey";
         public const string ConnectCompanyKeyClaim = ConnectNamespace + "Claims/CompanyKey";
+        public const string ConnectDepotKeyClaim = ConnectNamespace + "Claims/DepotKey";
         public const string ConnectTokenType = ConnectNamespace + "Tokens/ConnectToken";
 
         public const string ConnectTokenPrefix = "ct";
@@ -34,6 +35,7 @@
         public const string ConnectLicenseKeyElementName = "LicenseKey";
         public const string ConnectMachineKeyElementName = "MachineKey";
         public const string ConnectCompanyKeyElementName = "CompanyKey";
+        public const string ConnectDepotKeyElementName = "DepotKey";
 
         public const string ConnectAdministratonCompany = "Skillray";
     }

@@ -13,6 +13,7 @@ namespace Connect.Shared.Models
             LicenseKey = connectKeys.LicenseKey;
             CompanyKey = connectKeys.CompanyKey;
             MachineKey = connectKeys.MachineKey;
+            DepotName = connectKeys.DepotName;
         }
         
         public ConnectUser ConnectUser { get; set; }
@@ -24,6 +25,8 @@ namespace Connect.Shared.Models
         public string CompanyKey { get; set; }
 
         public string MachineKey { get; set; }
+
+        public string DepotName { get; set; }
 
         public void Parse(string connectKey)
         {
@@ -46,6 +49,8 @@ namespace Connect.Shared.Models
             {
                 LicenseKey = parsed;
             }
+
+            DepotName = split[3];
         }
     }
 }

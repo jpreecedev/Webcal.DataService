@@ -32,6 +32,7 @@
         public DateTime? InspectionDate { get; set; }
         public string Technician { get; set; }
         public string CustomerContact { get; set; }
+        public string DepotName { get; set; }
 
         [MaxLength]
         public byte[] SerializedData { get; set; }

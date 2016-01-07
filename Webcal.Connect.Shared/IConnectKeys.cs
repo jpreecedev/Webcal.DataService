@@ -7,6 +7,7 @@ namespace Connect.Shared
         int LicenseKey { get; set; }
         string CompanyKey { get; set; }
         string MachineKey { get; set; }
+        string DepotName { get; set; }
 
         string ConnectKey { get; }
     }

@@ -43,6 +43,7 @@ namespace Connect.Service
                 CreateAuthorizationPolicy(ConnectConstants.ConnectLicenseKeyClaim, connectToken.ConnectKeys.LicenseKey, Rights.PossessProperty),
                 CreateAuthorizationPolicy(ConnectConstants.ConnectMachineKeyClaim, connectToken.ConnectKeys.MachineKey, Rights.PossessProperty),
                 CreateAuthorizationPolicy(ConnectConstants.ConnectCompanyKeyClaim, connectToken.ConnectKeys.CompanyKey, Rights.PossessProperty),
+                CreateAuthorizationPolicy(ConnectConstants.ConnectDepotKeyClaim, connectToken.ConnectKeys.DepotName, Rights.PossessProperty)
             };
 
             return policies.AsReadOnly();
@@ -97,23 +98,6 @@ namespace Connect.Service
         private static ConnectTokenAuthorizationPolicy CreateAuthorizationPolicy<T>(string claimType, T resource, string rights)
         {
             return new ConnectTokenAuthorizationPolicy(new DefaultClaimSet(new Claim(claimType, resource, rights)));
-        }
-
-        private static void AddUnauthorizedUser(ConnectContext context, IConnectKeys connectKeys)
-        {
-            var unauthorizedUser = context.UnauthorizedUsers.FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey &&
-                                                                                 c.LicenseKey == connectKeys.LicenseKey &&
-                                                                                 c.MachineKey == connectKeys.MachineKey);
-
-            if (unauthorizedUser == null)
-            {
-                unauthorizedUser = new UserPendingAuthorization(connectKeys);
-            }
-
-            unauthorizedUser.LastAttempt = DateTime.Now;
-
-            context.UnauthorizedUsers.AddOrUpdate(unauthorizedUser);
-            context.SaveChanges();
         }
     }
 }

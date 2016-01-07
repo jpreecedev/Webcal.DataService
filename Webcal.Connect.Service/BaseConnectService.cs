@@ -41,7 +41,8 @@
             {
                 c.ConnectUser.Id,
                 c.CompanyKey,
-                c.MachineKey
+                c.MachineKey,
+                c.DepotName
             })
             .FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey && c.MachineKey == connectKeys.MachineKey);
 
@@ -58,8 +59,9 @@
             int licenseKey = int.Parse(FetchClaimValue(ConnectConstants.ConnectLicenseKeyClaim));
             string companyKey = FetchClaimValue(ConnectConstants.ConnectCompanyKeyClaim);
             string machineKey = FetchClaimValue(ConnectConstants.ConnectMachineKeyClaim);
+            string depotKey = FetchClaimValue(ConnectConstants.ConnectDepotKeyClaim);
 
-            return new ConnectKeys(string.Empty, licenseKey, companyKey, machineKey);
+            return new ConnectKeys(string.Empty, licenseKey, companyKey, machineKey, depotKey);
         }
 
         protected string FetchClaimValue(string claimType)

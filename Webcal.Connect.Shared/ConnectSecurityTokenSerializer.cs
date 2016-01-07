@@ -45,10 +45,11 @@
                 string licenseKey = reader.ReadElementString(ConnectConstants.ConnectLicenseKeyElementName, ConnectConstants.ConnectNamespace);
                 string companyKey = reader.ReadElementString(ConnectConstants.ConnectCompanyKeyElementName, ConnectConstants.ConnectNamespace);
                 string machineKey = reader.ReadElementString(ConnectConstants.ConnectMachineKeyElementName, ConnectConstants.ConnectNamespace);
+                string depotKey = reader.ReadElementString(ConnectConstants.ConnectDepotKeyElementName, ConnectConstants.ConnectNamespace);
 
                 reader.ReadEndElement();
 
-                return new ConnectToken(new ConnectKeys(url, int.Parse(licenseKey), companyKey, machineKey), id);
+                return new ConnectToken(new ConnectKeys(url, int.Parse(licenseKey), companyKey, machineKey, depotKey), id);
             }
             return DefaultInstance.ReadToken(reader, tokenResolver);
         }
@@ -82,6 +83,7 @@
                 writer.WriteElementString(ConnectConstants.ConnectLicenseKeyElementName, ConnectConstants.ConnectNamespace, XmlConvert.ToString(connectToken.ConnectKeys.LicenseKey));
                 writer.WriteElementString(ConnectConstants.ConnectCompanyKeyElementName, ConnectConstants.ConnectNamespace, connectToken.ConnectKeys.CompanyKey);
                 writer.WriteElementString(ConnectConstants.ConnectMachineKeyElementName, ConnectConstants.ConnectNamespace, connectToken.ConnectKeys.MachineKey);
+                writer.WriteElementString(ConnectConstants.ConnectDepotKeyElementName, ConnectConstants.ConnectNamespace, connectToken.ConnectKeys.DepotName);
                 writer.WriteEndElement();
                 writer.Flush();
             }
