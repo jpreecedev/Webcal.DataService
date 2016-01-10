@@ -2,6 +2,7 @@
 {
     using System.ServiceModel;
     using Models;
+    using System.IO;
 
     [ServiceContract]
     [XmlSerializerFormat]
@@ -27,5 +28,8 @@
 
         [OperationContract]
         CustomerContact[] FindExistingCustomerContact(string customerName);
+
+        [OperationContract]
+        ServiceCredentials GetServiceCredentials();
     }
 }

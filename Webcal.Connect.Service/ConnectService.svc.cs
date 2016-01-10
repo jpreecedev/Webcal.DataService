@@ -37,7 +37,7 @@ namespace Connect.Service
 
             registrationNumber = registrationNumber.ToUpper();
 
-            string companyKey = FetchClaimValue(ConnectConstants.ConnectCompanyKeyClaim);
+            var companyKey = FetchClaimValue(ConnectConstants.ConnectCompanyKeyClaim);
 
             using (var context = new ConnectContext())
             {
@@ -90,7 +90,7 @@ namespace Connect.Service
             {
                 return null;
             }
-            
+
             using (var context = new ConnectContext())
             {
                 var a = context.CustomerContacts.Where(c => c.Name != null && c.Name.Trim().ToLower().Replace(" ", "").Replace(".", "").Replace("-", "").StartsWith(customerName)).ToArray();
@@ -98,11 +98,21 @@ namespace Connect.Service
             }
         }
 
+        public ServiceCredentials GetServiceCredentials()
+        {
+            return new ServiceCredentials
+            {
+                Username = "backup@webcalconnect.com",
+                Password = "7w3uTX096cMlpyc",
+                UserId = GetUserId()
+            };
+        }
+
         private void UploadDocument<T>(T document) where T : Document
         {
             using (var context = new ConnectContext())
             {
-                document.UserId = GetUserId(context);
+                document.UserId = GetUserId();
                 context.Set<T>().Add(document);
 
                 context.SaveChanges();
@@ -112,16 +122,16 @@ namespace Connect.Service
         private static Document FindDocument<T>(ConnectContext context, string registrationNumber, string companyKey) where T : Document
         {
             return context.Set<T>()
-                          .Where(doc => doc.RegistrationNumber == registrationNumber)
-                          .OrderByDescending(doc => doc.Created)
-                          .Join(context.UserNodes, doc => doc.UserId, user => user.Id, (doc, user) => new
-                          {
-                              user.CompanyKey,
-                              Document = doc
-                          })
-                          .Where(b => b.CompanyKey == companyKey)
-                          .Select(a => a.Document)
-                          .FirstOrDefault();
+                .Where(doc => doc.RegistrationNumber == registrationNumber)
+                .OrderByDescending(doc => doc.Created)
+                .Join(context.UserNodes, doc => doc.UserId, user => user.Id, (doc, user) => new
+                {
+                    user.CompanyKey,
+                    Document = doc
+                })
+                .Where(b => b.CompanyKey == companyKey)
+                .Select(a => a.Document)
+                .FirstOrDefault();
         }
     }
 }
