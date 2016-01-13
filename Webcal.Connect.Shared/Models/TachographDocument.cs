@@ -69,7 +69,7 @@
 
         protected override void OnDocumentTypeChanged(string newValue)
         {
-            if (IsNew && string.Equals(DocumentType, Resources.TXT_MINOR_WORK_DETAILS) && string.IsNullOrEmpty(MinorWorkDetails))
+            if (IsNew && IsDigital && string.Equals(DocumentType, Resources.TXT_MINOR_WORK_DETAILS) && string.IsNullOrEmpty(MinorWorkDetails))
             {
                 MinorWorkDetails = Resources.TXT_ACTIVITY_MODE_CHANGE;
             }
