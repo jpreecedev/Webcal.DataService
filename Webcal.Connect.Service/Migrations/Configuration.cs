@@ -14,6 +14,7 @@ namespace Connect.Service.Migrations
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = false;
+            ContextKey = "Connect.Shared.Migrations.Configuration";
         }
 
         protected override void Seed(ConnectContext context)

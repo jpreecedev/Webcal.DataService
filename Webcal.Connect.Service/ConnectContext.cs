@@ -8,6 +8,12 @@
 
     public class ConnectContext : IdentityDbContext<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>, IConnectContext
     {
+        public ConnectContext() 
+            : base(ConnectCredentials.ConnectionString)
+        {
+
+        }
+
         public DbSet<TachographDocument> TachographDocuments { get; set; }
 
         public DbSet<UndownloadabilityDocument> UndownloadabilityDocuments { get; set; }

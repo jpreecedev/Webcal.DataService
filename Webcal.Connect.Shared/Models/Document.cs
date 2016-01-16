@@ -34,6 +34,9 @@
         public string CustomerContact { get; set; }
         public string DepotName { get; set; }
 
+        [XmlIgnore]
+        public string CompanyName { get; set; }
+
         [MaxLength]
         public byte[] SerializedData { get; set; }
 

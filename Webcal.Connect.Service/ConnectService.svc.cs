@@ -1,5 +1,6 @@
 namespace Connect.Service
 {
+    using System.Data.Entity;
     using System.Linq;
     using System.ServiceModel;
     using Shared;
@@ -124,7 +125,7 @@ namespace Connect.Service
             return context.Set<T>()
                 .Where(doc => doc.RegistrationNumber == registrationNumber)
                 .OrderByDescending(doc => doc.Created)
-                .Join(context.UserNodes, doc => doc.UserId, user => user.Id, (doc, user) => new
+                .Join(context.UserNodes, doc => doc.UserId, user => user.ConnectUser.Id, (doc, user) => new
                 {
                     user.CompanyKey,
                     Document = doc
