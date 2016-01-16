@@ -55,39 +55,36 @@ namespace Connect.Service
 
             if (!LicenseManager.IsValid(connectKeys.LicenseKey.ToString()))
             {
-                result = new FaultException("The license key is invalid or has expired.");
+                return new FaultException("The license key is invalid or has expired.");
             }
 
-            if (result == null)
+            using (var context = new ConnectContext())
             {
-                using (var context = new ConnectContext())
+                var company = context.Users.FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey);
+                if (company == null)
                 {
-                    var company = context.Users.FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey);
-                    if (company == null)
-                    {
-                        result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
-                    }
+                    result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
+                }
 
-                    if (result == null)
+                if (result == null)
+                {
+                    var connectUserNode = context.UserNodes.FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey && c.CompanyKey == connectKeys.CompanyKey);
+                    if (connectUserNode == null)
                     {
-                        var connectUserNode = context.UserNodes.FirstOrDefault(c => c.MachineKey == connectKeys.MachineKey && c.CompanyKey == connectKeys.CompanyKey);
-                        if (connectUserNode == null)
-                        {
-                            var connectUser = context.Users.FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey);
-                            if (connectUser == null)
-                            {
-                                result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
-                                return result;
-                            }
-
-                            context.UserNodes.Add(new ConnectUserNode(connectKeys) {IsAuthorized = true, ConnectUser = connectUser});
-                            context.SaveChanges();
-                            return null;
-                        }
-                        if (!connectUserNode.IsAuthorized)
+                        var connectUser = context.Users.FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey);
+                        if (connectUser == null)
                         {
                             result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
+                            return result;
                         }
+
+                        context.UserNodes.Add(new ConnectUserNode(connectKeys) {IsAuthorized = true, ConnectUser = connectUser});
+                        context.SaveChanges();
+                        return null;
+                    }
+                    if (!connectUserNode.IsAuthorized)
+                    {
+                        result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
                     }
                 }
             }
