@@ -141,12 +141,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseConnectService.cs" />
+    <Compile Include="ConnectContext.cs" />
+    <Compile Include="ConnectCredentials.cs" />
     <Compile Include="ConnectServiceCredentials.cs" />
     <Compile Include="ConnectServiceCredentialsSecurityTokenManager.cs" />
     <Compile Include="ConnectServiceHost.cs" />
     <Compile Include="ConnectServiceHostFactory.cs" />
     <Compile Include="ConnectTokenAuthenticator.cs" />
     <Compile Include="ConnectTokenAuthorizationPolicy.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ConnectService.svc.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -164,6 +168,8 @@
     </Content>
     <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <None Include="Properties\PublishProfiles\Live.pubxml" />
+    <None Include="Properties\webcal-connect.pfx" />
+    <None Include="Properties\webcalconnect.pfx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

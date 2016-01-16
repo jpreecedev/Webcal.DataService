@@ -3,7 +3,6 @@ namespace Connect.Service
     using System;
     using System.ServiceModel;
     using System.ServiceModel.Activation;
-    using Shared;
 
     public class ConnectServiceHostFactory : ServiceHostFactoryBase
     {
@@ -11,7 +10,7 @@ namespace Connect.Service
         {
             return new ConnectServiceHost(new[]
             {
-                new Uri(ConnectConstants.BaseUrl)
+                new Uri(ConnectCredentials.BaseUrl)
             });
         }
     }

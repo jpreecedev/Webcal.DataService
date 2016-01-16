@@ -59,6 +59,10 @@
                 try
                 {
                     expirationDate = new DateTime(paddedAsLong);
+                    if (expirationDate == default(DateTime))
+                    {
+                        return false; 
+                    }
                     if (expirationDate.Hour == 0 && expirationDate.Minute == 0 && expirationDate.Second == 0 && expirationDate.Millisecond == 0)
                     {
                         return true;

@@ -1,4 +1,4 @@
-﻿namespace Connect.Shared
+﻿namespace Connect.Service
 {
     using System.Data.Entity;
     using Migrations;

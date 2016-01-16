@@ -29,7 +29,7 @@
             using (var context = new ConnectContext())
             {
                 var connectKeys = GetConnectKeys();
-                return context.GetUserId(connectKeys.CompanyKey, connectKeys.MachineKey);
+                return GetUserId(context, connectKeys.CompanyKey, connectKeys.MachineKey);
             }
         }
 
@@ -68,6 +68,25 @@
             claimValue = (enumerator.Current.Resource == null) ? null : enumerator.Current.Resource.ToString();
 
             return true;
+        }
+
+        private static int GetUserId(IConnectContext context, string companyKey, string machineKey)
+        {
+            var connectUser = context.UserNodes.Include(x => x.ConnectUser).Select(c => new
+            {
+                c.ConnectUser.Id,
+                c.CompanyKey,
+                c.MachineKey,
+                c.DepotName
+            })
+                .FirstOrDefault(c => c.CompanyKey == companyKey && c.MachineKey == machineKey);
+
+            if (connectUser != null)
+            {
+                return connectUser.Id;
+            }
+
+            return -1;
         }
     }
 }

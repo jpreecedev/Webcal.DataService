@@ -22,13 +22,13 @@ namespace Connect.Service
 
         protected override void InitializeRuntime()
         {
-            var baseUri = new Uri(ConnectConstants.BaseUrl);
+            var baseUri = new Uri(ConnectCredentials.BaseUrl);
             var serviceUri = new Uri(baseUri, "ConnectService.svc");
 
             Description.Behaviors.Remove((typeof (ServiceCredentials)));
 
             var serviceCredential = new ConnectServiceCredentials();
-            serviceCredential.ServiceCertificate.Certificate = new X509Certificate2(ConnectConstants.DefaultCertificate, ConnectConstants.CertificatePassword, X509KeyStorageFlags.MachineKeySet);
+            serviceCredential.ServiceCertificate.Certificate = new X509Certificate2(ConnectCredentials.DefaultCertificate, ConnectCredentials.CertificatePassword, X509KeyStorageFlags.MachineKeySet);
             Description.Behaviors.Add(serviceCredential);
 
             var behaviour = new ServiceMetadataBehavior {HttpGetEnabled = true, HttpsGetEnabled = false};

@@ -1,11 +1,12 @@
-namespace Connect.Shared.Migrations
+namespace Connect.Service.Migrations
 {
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
+    using Service;
     using Shared;
+    using Shared.Models;
 
     public sealed class Configuration : DbMigrationsConfiguration<ConnectContext>
     {

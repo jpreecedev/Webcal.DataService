@@ -1,18 +1,13 @@
-﻿namespace Connect.Shared
+﻿namespace Connect.Service
 {
-    using System.Data.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
-    using Models.License;
+    using Shared;
+    using Shared.Models;
+    using System.Data.Entity;
+    using Shared.Models.License;
 
-    public class ConnectContext : IdentityDbContext<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>
+    public class ConnectContext : IdentityDbContext<ConnectUser, ConnectRole, int, ConnectUserLogin, ConnectUserRole, ConnectUserClaim>, IConnectContext
     {
-        public ConnectContext()
-            : base(ConnectConstants.ConnectionString)
-        {
-            Configuration.LazyLoadingEnabled = false;
-        }
-
         public DbSet<TachographDocument> TachographDocuments { get; set; }
 
         public DbSet<UndownloadabilityDocument> UndownloadabilityDocuments { get; set; }
@@ -36,10 +31,5 @@
         public DbSet<Client> Clients { get; set; }
 
         public DbSet<License> Licenses { get; set; }
-
-        public static ConnectContext Create()
-        {
-            return new ConnectContext();
-        }
     }
 }

@@ -99,7 +99,6 @@
   <ItemGroup>
     <Compile Include="ConnectBindingHelper.cs" />
     <Compile Include="ConnectConstants.cs" />
-    <Compile Include="ConnectContext.cs" />
     <Compile Include="ConnectKeys.cs" />
     <Compile Include="ConnectRole.cs" />
     <Compile Include="ConnectRoles.cs" />
@@ -111,18 +110,16 @@
     <Compile Include="ConnectUserRole.cs" />
     <Compile Include="DocumentType.cs" />
     <Compile Include="DocumentTypeHelper.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="IConnectBindingHelper.cs" />
+    <Compile Include="IConnectContext.cs" />
     <Compile Include="IConnectDocument.cs" />
     <Compile Include="IConnectEmail.cs" />
     <Compile Include="IConnectKeys.cs" />
     <Compile Include="IConnectService.cs" />
     <Compile Include="ICustomerContact.cs" />
-    <Compile Include="Initializer.cs" />
     <Compile Include="LicenseManager.cs" />
     <Compile Include="Macros\MacroAttribute.cs" />
     <Compile Include="Macros\MacroHelper.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BaseNotification.cs" />
     <Compile Include="Models\BaseUserModel.cs" />
