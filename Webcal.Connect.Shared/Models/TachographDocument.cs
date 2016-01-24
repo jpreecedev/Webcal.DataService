@@ -47,6 +47,9 @@
         public bool IsDigital { get; set; }
         public bool NewBattery { get; set; }
 
+        [NotMapped, XmlIgnore]
+        public string NewInspectionInfo { get; set; }
+
         public void Convert(CalibrationRecord calibrationRecord)
         {
             if (calibrationRecord == null)
