@@ -5,7 +5,7 @@
 #if DEBUG
 
         public const string BaseUrl = "http://webcal-connect.local/";
-        public const string ConnectionString = "Server=.;Database=WebcalConnect;User Id=sa; Password=password123@;";
+        public const string ConnectionString = "Server=.;Database=WebcalConnect;User Id=webcal; Password=P@ssword123;";
         public static byte[] DefaultCertificate = Properties.Resources.Local_Certificate;
         public const string CertificatePassword = "";
 #else
