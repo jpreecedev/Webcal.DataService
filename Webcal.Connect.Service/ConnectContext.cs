@@ -37,5 +37,11 @@
         public DbSet<Client> Clients { get; set; }
 
         public DbSet<License> Licenses { get; set; }
+
+        public DbSet<MobileApplicationUser> MobileApplicationUsers { get; set; }
+
+        public DbSet<QCReport> QCReports { get; set; }
+
+        public DbSet<QCReport3Month> QCReports3Month { get; set; }
     }
 }

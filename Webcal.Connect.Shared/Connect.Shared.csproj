@@ -120,6 +120,7 @@
     <Compile Include="LicenseManager.cs" />
     <Compile Include="Macros\MacroAttribute.cs" />
     <Compile Include="Macros\MacroHelper.cs" />
+    <Compile Include="Models\MobileApplicationReport.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BaseNotification.cs" />
     <Compile Include="Models\BaseUserModel.cs" />
@@ -134,6 +135,11 @@
     <Compile Include="Models\LetterForDecommissioningDocument.cs" />
     <Compile Include="Models\License\License.cs" />
     <Compile Include="Models\LinkedVehicle.cs" />
+    <Compile Include="Models\MobileApplicationReportError.cs" />
+    <Compile Include="Models\MobileApplicationUser.cs" />
+    <Compile Include="Models\MobileDocumentType.cs" />
+    <Compile Include="Models\QCReport.cs" />
+    <Compile Include="Models\QCReport3Month.cs" />
     <Compile Include="Models\ServiceCredentials.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\TachoCentreOperator.cs" />
