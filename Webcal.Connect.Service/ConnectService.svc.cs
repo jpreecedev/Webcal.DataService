@@ -1,6 +1,6 @@
 namespace Connect.Service
 {
-    using System.Data.Entity;
+    using System;
     using System.Linq;
     using System.ServiceModel;
     using Shared;
@@ -12,6 +12,21 @@ namespace Connect.Service
         public string Echo()
         {
             return "Echo";
+        }
+
+        public void AutoUploadTachographDocument(TachographDocument tachographDocument)
+        {
+            AutoUploadDocument(tachographDocument);
+        }
+
+        public void AutoUploadUndownloadabilityDocument(UndownloadabilityDocument undownloadabilityDocument)
+        {
+            AutoUploadDocument(undownloadabilityDocument);
+        }
+
+        public void AutoUploadLetterForDecommissioningDocument(LetterForDecommissioningDocument letterForDecommissioningDocument)
+        {
+            AutoUploadDocument(letterForDecommissioningDocument);
         }
 
         public void UploadTachographDocument(TachographDocument tachographDocument)
@@ -120,7 +135,39 @@ namespace Connect.Service
             }
         }
 
+        private void AutoUploadDocument<T>(T document) where T : Document
+        {
+            using (var context = new ConnectContext())
+            {
+                var companyKey = FetchClaimValue(ConnectConstants.ConnectCompanyKeyClaim);
+                var existingDocument = FindDocuments<T>(context, document.RegistrationNumber, companyKey);
+
+                bool hasExisting = existingDocument.Any();
+                foreach (var item in existingDocument)
+                {
+                    if (item.Equals(document))
+                    {
+                        hasExisting = true;
+                        break;
+                    }
+                }
+
+                if (!hasExisting)
+                {
+                    document.UserId = GetUserId();
+                    context.Set<T>().Add(document);
+
+                    context.SaveChanges();
+                }
+            }
+        }
+
         private static Document FindDocument<T>(ConnectContext context, string registrationNumber, string companyKey) where T : Document
+        {
+            return FindDocuments<T>(context, registrationNumber, companyKey).FirstOrDefault();
+        }
+
+        private static IQueryable<T> FindDocuments<T>(ConnectContext context, string registrationNumber, string companyKey) where T : Document
         {
             return context.Set<T>()
                 .Where(doc => doc.RegistrationNumber == registrationNumber)
@@ -131,8 +178,7 @@ namespace Connect.Service
                     Document = doc
                 })
                 .Where(b => b.CompanyKey == companyKey)
-                .Select(a => a.Document)
-                .FirstOrDefault();
+                .Select(a => a.Document);
         }
     }
 }

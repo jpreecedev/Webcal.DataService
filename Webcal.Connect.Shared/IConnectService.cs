@@ -12,6 +12,15 @@
         string Echo();
 
         [OperationContract]
+        void AutoUploadTachographDocument(TachographDocument tachographDocument);
+
+        [OperationContract]
+        void AutoUploadUndownloadabilityDocument(UndownloadabilityDocument undownloadabilityDocument);
+
+        [OperationContract]
+        void AutoUploadLetterForDecommissioningDocument(LetterForDecommissioningDocument letterForDecommissioningDocument);
+
+        [OperationContract]
         void UploadTachographDocument(TachographDocument tachographDocument);
 
         [OperationContract]
