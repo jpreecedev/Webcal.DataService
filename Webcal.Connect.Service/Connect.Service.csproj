@@ -94,6 +94,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.ServiceModel.Channels" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -143,6 +144,8 @@
     <Compile Include="BaseConnectService.cs" />
     <Compile Include="ConnectContext.cs" />
     <Compile Include="ConnectCredentials.cs" />
+    <Compile Include="ConnectDocumentService.cs" />
+    <Compile Include="ConnectReportService.cs" />
     <Compile Include="ConnectServiceCredentials.cs" />
     <Compile Include="ConnectServiceCredentialsSecurityTokenManager.cs" />
     <Compile Include="ConnectServiceHost.cs" />

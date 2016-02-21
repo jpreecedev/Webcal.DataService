@@ -113,14 +113,16 @@
     <Compile Include="IConnectBindingHelper.cs" />
     <Compile Include="IConnectContext.cs" />
     <Compile Include="IConnectDocument.cs" />
+    <Compile Include="IConnectDocumentService.cs" />
     <Compile Include="IConnectEmail.cs" />
     <Compile Include="IConnectKeys.cs" />
+    <Compile Include="IConnectReportService.cs" />
     <Compile Include="IConnectService.cs" />
     <Compile Include="ICustomerContact.cs" />
     <Compile Include="LicenseManager.cs" />
     <Compile Include="Macros\MacroAttribute.cs" />
     <Compile Include="Macros\MacroHelper.cs" />
-    <Compile Include="Models\MobileApplicationReport.cs" />
+    <Compile Include="Models\BaseReport.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BaseNotification.cs" />
     <Compile Include="Models\BaseUserModel.cs" />
@@ -137,7 +139,7 @@
     <Compile Include="Models\LinkedVehicle.cs" />
     <Compile Include="Models\MobileApplicationReportError.cs" />
     <Compile Include="Models\MobileApplicationUser.cs" />
-    <Compile Include="Models\MobileDocumentType.cs" />
+    <Compile Include="Models\ReportType.cs" />
     <Compile Include="Models\QCReport.cs" />
     <Compile Include="Models\QCReport3Month.cs" />
     <Compile Include="Models\ServiceCredentials.cs" />

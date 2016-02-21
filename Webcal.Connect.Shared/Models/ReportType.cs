@@ -1,6 +1,6 @@
 ﻿namespace Connect.Shared.Models
 {
-    public enum MobileDocumentType
+    public enum ReportType
     {
         QCReport,
         QCReport3Month

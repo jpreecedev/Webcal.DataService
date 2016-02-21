@@ -4,6 +4,7 @@ namespace Connect.Service
     using System.Data.Entity;
     using System.Security.Cryptography.X509Certificates;
     using System.ServiceModel;
+    using System.ServiceModel.Configuration;
     using System.ServiceModel.Description;
     using Shared;
 
