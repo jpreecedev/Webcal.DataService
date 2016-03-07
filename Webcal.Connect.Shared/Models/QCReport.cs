@@ -4,6 +4,12 @@
 
     public class QCReport : BaseReport, IEquatable<QCReport>
     {
+        public string TachoCentreName
+        {
+            get { return CentreName; }
+            set { CentreName = value; }
+        }
+
         public string TachoCentreLine1 { get; set; }
 
         public string TachoCentreLine2 { get; set; }
