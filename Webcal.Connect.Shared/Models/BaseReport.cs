@@ -7,7 +7,7 @@
     {
         [Required]
         [MinLength(3)]
-        public string TachoCentreName { get; set; }
+        public string CentreName { get; set; }
 
         public DateTime Created { get; set; }
 

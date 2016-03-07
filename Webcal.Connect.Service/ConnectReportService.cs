@@ -42,7 +42,7 @@
         {
             using (var context = new ConnectContext())
             {
-                var existingDocument = FindReports<T>(context, report.TachoCentreName);
+                var existingDocument = FindReports<T>(context, report.CentreName);
 
                 bool hasExisting = existingDocument.Any();
                 foreach (var item in existingDocument)
@@ -69,7 +69,7 @@
         private static IQueryable<T> FindReports<T>(ConnectContext context, string tachoCentreName) where T : BaseReport
         {
             return context.Set<T>()
-                .Where(doc => doc.TachoCentreName == tachoCentreName)
+                .Where(doc => doc.CentreName == tachoCentreName)
                 .OrderByDescending(doc => doc.Created)
                 .Join(context.UserNodes, rep => rep.ConnectUserId, user => user.ConnectUser.Id, (doc, user) => new
                 {
