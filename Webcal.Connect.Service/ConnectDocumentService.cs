@@ -1,6 +1,9 @@
 ﻿namespace Connect.Service
 {
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Reflection;
     using System.ServiceModel;
     using Shared;
     using Shared.Models;
@@ -35,6 +38,21 @@
         public void UploadLetterForDecommissioningDocument(LetterForDecommissioningDocument letterForDecommissioningDocument)
         {
             UploadDocument(letterForDecommissioningDocument);
+        }
+
+        public void UpdateTachographDocument(TachographDocument tachographDocument)
+        {
+            UpdateDocument(tachographDocument);
+        }
+
+        public void UpdateUndownloadabilityDocument(UndownloadabilityDocument undownloadabilityDocument)
+        {
+            UpdateDocument(undownloadabilityDocument);
+        }
+
+        public void UpdateLetterForDecommissioningDocument(LetterForDecommissioningDocument letterForDecommissioningDocument)
+        {
+            UpdateDocument(letterForDecommissioningDocument);
         }
 
         public object Find(string registrationNumber, DocumentType documentType)
@@ -85,6 +103,24 @@
                 context.Set<T>().Add(document);
 
                 context.SaveChanges();
+            }
+        }
+
+        private void UpdateDocument<T>(T document) where T : Document
+        {
+            using (var context = new ConnectContext())
+            {
+                var companyKey = FetchClaimValue(ConnectConstants.ConnectCompanyKeyClaim);
+                var existingDocument = FindDocument<T>(context, document.RegistrationNumber, companyKey);
+
+                if (existingDocument != null)
+                {
+                    document.Id = existingDocument.Id;
+                    document.UserId = GetUserId();
+
+                    context.Entry(existingDocument).CurrentValues.SetValues(document);
+                    context.SaveChanges();
+                }
             }
         }
 

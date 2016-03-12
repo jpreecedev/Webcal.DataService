@@ -24,6 +24,15 @@
         void UploadLetterForDecommissioningDocument(LetterForDecommissioningDocument letterForDecommissioningDocument);
 
         [OperationContract]
+        void UpdateTachographDocument(TachographDocument tachographDocument);
+
+        [OperationContract]
+        void UpdateUndownloadabilityDocument(UndownloadabilityDocument undownloadabilityDocument);
+
+        [OperationContract]
+        void UpdateLetterForDecommissioningDocument(LetterForDecommissioningDocument letterForDecommissioningDocument);
+        
+        [OperationContract]
         object Find(string registrationNumber, DocumentType documentType);
     }
 }
