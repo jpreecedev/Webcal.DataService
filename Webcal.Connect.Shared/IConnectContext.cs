@@ -34,6 +34,6 @@
 
         DbSet<QCReport> QCReports { get; set; }
 
-        DbSet<QCReport3Month> QCReports3Month { get; set; }
+        DbSet<QCReport6Month> QCReports6Month { get; set; }
     }
 }

@@ -3,7 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class QCReport3Month : BaseReport, IEquatable<QCReport3Month>
+    public class QCReport6Month : BaseReport, IEquatable<QCReport6Month>
     {
         [Required]
         [MinLength(3)]
@@ -47,7 +47,7 @@
 
         public DateTime Date { get; set; }
 
-        public bool Equals(QCReport3Month other)
+        public bool Equals(QCReport6Month other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -59,7 +59,7 @@
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((QCReport3Month) obj);
+            return Equals((QCReport6Month) obj);
         }
 
         public override int GetHashCode()

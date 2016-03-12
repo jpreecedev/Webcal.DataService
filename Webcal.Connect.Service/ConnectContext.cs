@@ -42,6 +42,6 @@
 
         public DbSet<QCReport> QCReports { get; set; }
 
-        public DbSet<QCReport3Month> QCReports3Month { get; set; }
+        public DbSet<QCReport6Month> QCReports6Month { get; set; }
     }
 }

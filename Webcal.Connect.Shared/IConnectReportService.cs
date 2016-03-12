@@ -9,12 +9,12 @@
         void AutoUploadQCReport(QCReport report);
 
         [OperationContract]
-        void AutoUploadQCReport3Month(QCReport3Month report);
+        void AutoUploadQCReport6Month(QCReport6Month report);
 
         [OperationContract]
         void UploadQCReport(QCReport report);
 
         [OperationContract]
-        void UploadQCReport3Month(QCReport3Month report);
+        void UploadQCReport6Month(QCReport6Month report);
     }
 }

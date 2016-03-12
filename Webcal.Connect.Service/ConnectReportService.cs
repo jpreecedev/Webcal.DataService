@@ -10,7 +10,7 @@
             AutoUploadReport(report);
         }
 
-        public void AutoUploadQCReport3Month(QCReport3Month report)
+        public void AutoUploadQCReport6Month(QCReport6Month report)
         {
             AutoUploadReport(report);
         }
@@ -20,7 +20,7 @@
             UploadReport(report);
         }
 
-        public void UploadQCReport3Month(QCReport3Month report)
+        public void UploadQCReport6Month(QCReport6Month report)
         {
             UploadReport(report);
         }

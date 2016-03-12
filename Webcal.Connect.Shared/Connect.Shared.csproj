@@ -141,7 +141,7 @@
     <Compile Include="Models\MobileApplicationUser.cs" />
     <Compile Include="Models\ReportType.cs" />
     <Compile Include="Models\QCReport.cs" />
-    <Compile Include="Models\QCReport3Month.cs" />
+    <Compile Include="Models\QCReport6Month.cs" />
     <Compile Include="Models\ServiceCredentials.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\TachoCentreOperator.cs" />

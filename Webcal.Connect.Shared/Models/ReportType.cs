@@ -3,6 +3,6 @@
     public enum ReportType
     {
         QCReport,
-        QCReport3Month
+        QCReport6Month
     }
 }
