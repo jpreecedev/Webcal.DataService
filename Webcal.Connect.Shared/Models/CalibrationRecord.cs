@@ -4,24 +4,24 @@
 
     public class CalibrationRecord : BaseNotification
     {
-        private DateTime _calibrationTime;
+        private DateTime? _calibrationTime;
 
-        public DateTime CalibrationTime
+        public DateTime? CalibrationTime
         {
             get { return _calibrationTime; }
             set
             {
                 _calibrationTime = value;
 
-                if (value.Year == 1970)
+                if (value.GetValueOrDefault().Year == 1970)
                 {
-                    _calibrationTime = DateTime.Now;
+                    _calibrationTime = null;
                 }
             }
         }
 
         public double MaxSpeed { get; set; }
-        public DateTime NextCalibrationDate { get; set; }
+        public DateTime? NextCalibrationDate { get; set; }
         public string OdometerValue { get; set; }
         public string Purpose { get; set; }
         public string SensorSerialNumber { get; set; }
