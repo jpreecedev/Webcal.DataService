@@ -46,6 +46,7 @@
         public DateTime? CalibrationTime { get; set; }
         public bool IsDigital { get; set; }
         public bool NewBattery { get; set; }
+        public bool IsQCCheck { get; set; }
 
         [NotMapped, XmlIgnore]
         public string NewInspectionInfo { get; set; }
