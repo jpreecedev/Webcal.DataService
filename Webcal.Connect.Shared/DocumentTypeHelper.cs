@@ -1,5 +1,8 @@
 ﻿namespace Connect.Shared
 {
+    using System;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using Models;
 
     public static class DocumentTypeHelper
@@ -29,6 +32,16 @@
             }
 
             return FilterDocumentType.Any;
+        }
+
+        public static string AsDisplayString(this FilterDocumentType documentType)
+        {
+            var result = documentType.GetAttributeOfType<DisplayAttribute>();
+            if (result != null && !string.IsNullOrEmpty(result.Name))
+            {
+                return result.Name;
+            }
+            return documentType.ToString();
         }
     }
 }

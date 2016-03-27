@@ -1,16 +1,20 @@
 ﻿namespace Connect.Shared.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum FilterDocumentType
     {
         Any,
 
-        [Display(Name = "Analogue Tachograph")] AnalogueTachograph,
+        [Display(Name = "Analogue Tacho")] AnalogueTachograph,
 
-        Tachograph,
+        [Display(Name = "Digital Tacho")] Tachograph,
+
         Undownloadability,
 
-        [Display(Name = "Letter For Decommissioning")] LetterForDecommissioning
+        [Display(Name = "Letter For Decomm")] LetterForDecommissioning
     }
 }
