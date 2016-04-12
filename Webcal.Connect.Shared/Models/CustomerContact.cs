@@ -1,6 +1,5 @@
 ﻿namespace Connect.Shared.Models
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,8 +7,7 @@
     public class CustomerContact : BaseModel, ICustomerContact
     {
         public string Email { get; set; }
-        public List<LinkedVehicle> LinkedVehicles { get; set; }
-
+        
         [Display(Name = "Name")]
         public string Name { get; set; }
 

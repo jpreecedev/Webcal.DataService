@@ -142,7 +142,6 @@
     <Compile Include="Models\FilterDocumentType.cs" />
     <Compile Include="Models\LetterForDecommissioningDocument.cs" />
     <Compile Include="Models\License\License.cs" />
-    <Compile Include="Models\LinkedVehicle.cs" />
     <Compile Include="Models\MobileApplicationReportError.cs" />
     <Compile Include="Models\MobileApplicationUser.cs" />
     <Compile Include="Models\ReportType.cs" />

@@ -23,9 +23,7 @@
         DbSet<TachoCentreOperator> TachoCentreOperators { get; set; }
 
         DbSet<CustomerContact> CustomerContacts { get; set; }
-
-        DbSet<LinkedVehicle> LinkedVehicles { get; set; }
-
+        
         DbSet<Client> Clients { get; set; }
 
         DbSet<License> Licenses { get; set; }
