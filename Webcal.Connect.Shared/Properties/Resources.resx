@@ -123,4 +123,31 @@
   <data name="TXT_ACTIVITY_MODE_CHANGE" xml:space="preserve">
     <value>Activity Mode Change</value>
   </data>
+  <data name="TXT_FRIDAY" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="TXT_MONDAY" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="TXT_SATURDAY" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="TXT_SUNDAY" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="TXT_THURSDAY" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="TXT_TUESDAY" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="TXT_WEDNESDAY" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="ERR_DAY_OF_WEEK_NOT_RECOGNISED" xml:space="preserve">
+    <value>Day of week not recognised</value>
+  </data>
+  <data name="TXT_TECHNICIAN_DEFAULT" xml:space="preserve">
+    <value>{0} (Default)</value>
+  </data>
 </root>

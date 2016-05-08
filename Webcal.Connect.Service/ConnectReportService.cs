@@ -1,10 +1,14 @@
 ﻿namespace Connect.Service
 {
+    using System;
     using System.Linq;
+    using Shared;
     using Shared.Models;
 
     public partial class ConnectService
     {
+        private static readonly DateTime _sqlDefaultDateTime = DateTime.Parse("01/01/1900");
+
         public void AutoUploadQCReport(QCReport report)
         {
             AutoUploadReport(report);
@@ -23,6 +27,38 @@
         public void UploadQCReport6Month(QCReport6Month report)
         {
             UploadReport(report);
+        }
+
+        public void UploadTechnician(Technician technician)
+        {
+            using (var context = new ConnectContext())
+            {
+                technician.Id = 0;
+                technician.UserId = GetUserId();
+                technician.Uploaded = DateTime.Now;
+
+                context.Set<Technician>().Add(technician);
+
+                context.SaveChanges();
+            }
+        }
+
+        public void UploadWorkshopSettings(WorkshopSettings workshopSettings)
+        {
+            using (var context = new ConnectContext())
+            {
+                workshopSettings.Id = 0;
+                workshopSettings.UserId = GetUserId();
+                workshopSettings.Uploaded = DateTime.Now;
+
+                if (workshopSettings.Created == default(DateTime) || workshopSettings.Created == _sqlDefaultDateTime)
+                {
+                    workshopSettings.Created = DateTime.Now;
+                }
+
+                context.Set<WorkshopSettings>().Add(workshopSettings);
+                context.SaveChanges();
+            }
         }
 
         private void UploadReport<T>(T report) where T : BaseReport

@@ -35,5 +35,9 @@
         DbSet<QCReport> QCReports { get; set; }
 
         DbSet<QCReport6Month> QCReports6Month { get; set; }
+
+        DbSet<Technician> Technicians { get; set; }
+
+        DbSet<WorkshopSettings> WorkshopSettings { get; set; }
     }
 }

@@ -89,6 +89,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Caching" />
@@ -101,6 +102,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseSettings.cs" />
     <Compile Include="ConnectBindingHelper.cs" />
     <Compile Include="ConnectConstants.cs" />
     <Compile Include="ConnectKeys.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="ConnectUserClaim.cs" />
     <Compile Include="ConnectUserLogin.cs" />
     <Compile Include="ConnectUserRole.cs" />
+    <Compile Include="CustomDayOfWeek.cs" />
     <Compile Include="DocumentType.cs" />
     <Compile Include="DocumentTypeHelper.cs" />
     <Compile Include="Extensions.cs" />
@@ -124,6 +127,7 @@
     <Compile Include="IConnectReportService.cs" />
     <Compile Include="IConnectService.cs" />
     <Compile Include="ICustomerContact.cs" />
+    <Compile Include="IUserSignatureCapture.cs" />
     <Compile Include="LicenseManager.cs" />
     <Compile Include="Macros\MacroAttribute.cs" />
     <Compile Include="Macros\MacroHelper.cs" />
@@ -153,6 +157,7 @@
     <Compile Include="Models\TachoCentreOperator.cs" />
     <Compile Include="Models\TachoFleetEmail.cs" />
     <Compile Include="Models\TachographDocument.cs" />
+    <Compile Include="Models\Technician.cs" />
     <Compile Include="Models\UndownloadabilityDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -160,7 +165,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReportItemStatus.cs" />
     <Compile Include="UserPendingAuthorization.cs" />
+    <Compile Include="WorkshopSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
@@ -178,6 +185,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

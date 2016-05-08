@@ -61,6 +61,15 @@ namespace Connect.Shared.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Day of week not recognised.
+        /// </summary>
+        public static string ERR_DAY_OF_WEEK_NOT_RECOGNISED {
+            get {
+                return ResourceManager.GetString("ERR_DAY_OF_WEEK_NOT_RECOGNISED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activity Mode Change.
         /// </summary>
         public static string TXT_ACTIVITY_MODE_CHANGE {
@@ -70,11 +79,83 @@ namespace Connect.Shared.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Friday.
+        /// </summary>
+        public static string TXT_FRIDAY {
+            get {
+                return ResourceManager.GetString("TXT_FRIDAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to M - Minor Work.
         /// </summary>
         public static string TXT_MINOR_WORK_DETAILS {
             get {
                 return ResourceManager.GetString("TXT_MINOR_WORK_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monday.
+        /// </summary>
+        public static string TXT_MONDAY {
+            get {
+                return ResourceManager.GetString("TXT_MONDAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saturday.
+        /// </summary>
+        public static string TXT_SATURDAY {
+            get {
+                return ResourceManager.GetString("TXT_SATURDAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sunday.
+        /// </summary>
+        public static string TXT_SUNDAY {
+            get {
+                return ResourceManager.GetString("TXT_SUNDAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (Default).
+        /// </summary>
+        public static string TXT_TECHNICIAN_DEFAULT {
+            get {
+                return ResourceManager.GetString("TXT_TECHNICIAN_DEFAULT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thursday.
+        /// </summary>
+        public static string TXT_THURSDAY {
+            get {
+                return ResourceManager.GetString("TXT_THURSDAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuesday.
+        /// </summary>
+        public static string TXT_TUESDAY {
+            get {
+                return ResourceManager.GetString("TXT_TUESDAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wednesday.
+        /// </summary>
+        public static string TXT_WEDNESDAY {
+            get {
+                return ResourceManager.GetString("TXT_WEDNESDAY", resourceCulture);
             }
         }
     }

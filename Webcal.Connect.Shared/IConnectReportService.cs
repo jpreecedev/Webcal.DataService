@@ -16,5 +16,11 @@
 
         [OperationContract]
         void UploadQCReport6Month(QCReport6Month report);
+
+        [OperationContract]
+        void UploadTechnician(Technician technician);
+
+        [OperationContract]
+        void UploadWorkshopSettings(WorkshopSettings workshopSettings);
     }
 }
