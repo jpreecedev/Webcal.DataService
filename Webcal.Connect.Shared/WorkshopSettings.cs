@@ -8,7 +8,7 @@
     using System.Xml.Serialization;
 
     [Serializable]
-    public class WorkshopSettings : BaseSettings
+    public class WorkshopSettings : BaseSettings, IEquatable<WorkshopSettings>
     {
         private bool _doNotSend;
         private bool _sendToCustomer;
@@ -113,5 +113,47 @@
 
         public DateTime Created { get; set; }
 
+        public bool Equals(WorkshopSettings other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return string.Equals(Address1, other.Address1, StringComparison.CurrentCulture) && string.Equals(Address2, other.Address2, StringComparison.CurrentCulture) && string.Equals(Address3, other.Address3, StringComparison.CurrentCulture) && AutoBackup == other.AutoBackup && AutoPrintLabels == other.AutoPrintLabels && string.Equals(BackupFilePath, other.BackupFilePath, StringComparison.CurrentCulture) && CentreQuarterlyCheckDate.Equals(other.CentreQuarterlyCheckDate) && Created.Equals(other.Created) && IsGV212CheckEnabled == other.IsGV212CheckEnabled && IsStatusReportCheckEnabled == other.IsStatusReportCheckEnabled && string.Equals(MainEmailAddress, other.MainEmailAddress, StringComparison.CurrentCulture) && MonthlyGV212Date.Equals(other.MonthlyGV212Date) && string.Equals(Office, other.Office, StringComparison.CurrentCulture) && string.Equals(PhoneNumber, other.PhoneNumber, StringComparison.CurrentCulture) && string.Equals(PostCode, other.PostCode, StringComparison.CurrentCulture) && string.Equals(SecondaryEmailAddress, other.SecondaryEmailAddress, StringComparison.CurrentCulture) && string.Equals(Town, other.Town, StringComparison.CurrentCulture) && Uploaded.Equals(other.Uploaded) && UserId == other.UserId && string.Equals(WorkshopName, other.WorkshopName, StringComparison.CurrentCulture);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((WorkshopSettings) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (Address1 != null ? StringComparer.CurrentCulture.GetHashCode(Address1) : 0);
+                hashCode = (hashCode*397) ^ (Address2 != null ? StringComparer.CurrentCulture.GetHashCode(Address2) : 0);
+                hashCode = (hashCode*397) ^ (Address3 != null ? StringComparer.CurrentCulture.GetHashCode(Address3) : 0);
+                hashCode = (hashCode*397) ^ AutoBackup.GetHashCode();
+                hashCode = (hashCode*397) ^ AutoPrintLabels.GetHashCode();
+                hashCode = (hashCode*397) ^ (BackupFilePath != null ? StringComparer.CurrentCulture.GetHashCode(BackupFilePath) : 0);
+                hashCode = (hashCode*397) ^ CentreQuarterlyCheckDate.GetHashCode();
+                hashCode = (hashCode*397) ^ Created.GetHashCode();
+                hashCode = (hashCode*397) ^ IsGV212CheckEnabled.GetHashCode();
+                hashCode = (hashCode*397) ^ IsStatusReportCheckEnabled.GetHashCode();
+                hashCode = (hashCode*397) ^ (MainEmailAddress != null ? StringComparer.CurrentCulture.GetHashCode(MainEmailAddress) : 0);
+                hashCode = (hashCode*397) ^ MonthlyGV212Date.GetHashCode();
+                hashCode = (hashCode*397) ^ (Office != null ? StringComparer.CurrentCulture.GetHashCode(Office) : 0);
+                hashCode = (hashCode*397) ^ (PhoneNumber != null ? StringComparer.CurrentCulture.GetHashCode(PhoneNumber) : 0);
+                hashCode = (hashCode*397) ^ (PostCode != null ? StringComparer.CurrentCulture.GetHashCode(PostCode) : 0);
+                hashCode = (hashCode*397) ^ (SecondaryEmailAddress != null ? StringComparer.CurrentCulture.GetHashCode(SecondaryEmailAddress) : 0);
+                hashCode = (hashCode*397) ^ (Town != null ? StringComparer.CurrentCulture.GetHashCode(Town) : 0);
+                hashCode = (hashCode*397) ^ Uploaded.GetHashCode();
+                hashCode = (hashCode*397) ^ UserId;
+                hashCode = (hashCode*397) ^ (WorkshopName != null ? StringComparer.CurrentCulture.GetHashCode(WorkshopName) : 0);
+                return hashCode;
+            }
+        }
     }
 }

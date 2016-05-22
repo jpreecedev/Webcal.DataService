@@ -1,6 +1,7 @@
 ﻿namespace Connect.Service
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using Shared;
     using Shared.Models;
@@ -33,11 +34,29 @@
         {
             using (var context = new ConnectContext())
             {
-                technician.Id = 0;
-                technician.UserId = GetUserId();
+                var userId = GetUserId();
+                technician.UserId = userId;
                 technician.Uploaded = DateTime.Now;
 
-                context.Set<Technician>().Add(technician);
+                var technicians = context.Technicians.Where(c => c.UserId == userId);
+                var technicianId = 0;
+
+                var match = technicians.FirstOrDefault(c => string.Equals(c.Name, technician.Name) && string.Equals(c.Number, technician.Number));
+                if (match != null)
+                {
+                    technicianId = match.Id;
+                }
+
+                technician.Id = technicianId;
+
+                if (technicianId == 0)
+                {
+                    context.Set<Technician>().Add(technician);
+                }
+                else
+                {
+                    context.Entry(match).CurrentValues.SetValues(technician);
+                }
 
                 context.SaveChanges();
             }
