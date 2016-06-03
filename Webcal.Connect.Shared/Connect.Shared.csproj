@@ -136,6 +136,7 @@
     <Compile Include="Models\BaseNotification.cs" />
     <Compile Include="Models\BaseUserModel.cs" />
     <Compile Include="Models\CalibrationRecord.cs" />
+    <Compile Include="Models\DetailedException.cs" />
     <Compile Include="Models\GV212Report.cs" />
     <Compile Include="Models\InspectionData.cs" />
     <Compile Include="Models\License\Client.cs" />

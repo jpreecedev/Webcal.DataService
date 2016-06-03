@@ -22,6 +22,20 @@ namespace Connect.Service
             }
         }
 
+        public void UploadDetailedException(DetailedException detailedException)
+        {
+            using (var context = new ConnectContext())
+            {
+                var existing = context.DetailedExceptions.Any(c => c.ExceptionDetails == detailedException.ExceptionDetails);
+                if (!existing)
+                {
+                    detailedException.UserId = GetUserId();
+                    context.DetailedExceptions.Add(detailedException);
+                    context.SaveChanges();
+                }
+            }
+        }
+
         public CustomerContact[] FindExistingCustomerContact(string customerName)
         {
             if (string.IsNullOrEmpty(customerName))

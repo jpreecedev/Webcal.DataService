@@ -39,5 +39,7 @@
         DbSet<Technician> Technicians { get; set; }
 
         DbSet<WorkshopSettings> WorkshopSettings { get; set; }
+
+        DbSet<DetailedException> DetailedExceptions { get; set; }
     }
 }

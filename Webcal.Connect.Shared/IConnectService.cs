@@ -18,5 +18,8 @@
 
         [OperationContract]
         ServiceCredentials GetServiceCredentials();
+
+        [OperationContract]
+        void UploadDetailedException(DetailedException detailedException);
     }
 }

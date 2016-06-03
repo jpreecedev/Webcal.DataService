@@ -78,7 +78,7 @@ namespace Connect.Service
                             return result;
                         }
 
-                        context.UserNodes.Add(new ConnectUserNode(connectKeys) {IsAuthorized = true, ConnectUser = connectUser});
+                        context.UserNodes.Add(new ConnectUserNode(connectKeys) { IsAuthorized = true, ConnectUser = connectUser });
                         context.SaveChanges();
                         return null;
                     }
