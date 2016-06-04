@@ -29,7 +29,21 @@
             using (var context = new ConnectContext())
             {
                 var connectKeys = GetConnectKeys();
-                return GetUserId(context, connectKeys.CompanyKey, connectKeys.MachineKey);
+                var user  = GetUser(context, connectKeys.CompanyKey, connectKeys.MachineKey);
+                if (user != null)
+                {
+                    return user.Id;
+                }
+                return -1;
+            }
+        }
+
+        public ConnectUser GetConnectUser()
+        {
+            using (var context = new ConnectContext())
+            {
+                var connectKeys = GetConnectKeys();
+                return GetUser(context, connectKeys.CompanyKey, connectKeys.MachineKey);
             }
         }
 
@@ -70,11 +84,12 @@
             return true;
         }
 
-        private static int GetUserId(IConnectContext context, string companyKey, string machineKey)
+        private static ConnectUser GetUser(IConnectContext context, string companyKey, string machineKey)
         {
             var connectUser = context.UserNodes.Include(x => x.ConnectUser).Select(c => new
             {
                 c.ConnectUser.Id,
+                c.ConnectUser,
                 c.CompanyKey,
                 c.MachineKey,
                 c.DepotName
@@ -83,10 +98,10 @@
 
             if (connectUser != null)
             {
-                return connectUser.Id;
+                return connectUser.ConnectUser;
             }
 
-            return -1;
+            return null;
         }
     }
 }

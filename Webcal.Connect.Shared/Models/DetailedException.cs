@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace Connect.Shared.Models
+﻿namespace Connect.Shared.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
 
@@ -22,7 +22,10 @@ namespace Connect.Shared.Models
 
         [DataMember]
         public DateTime Occurred { get; set; }
-        
+
+        [XmlIgnore, NotMapped]
+        public ConnectUser ConnectUser { get; set; }
+
         [XmlIgnore]
         public int UserId { get; set; }
 

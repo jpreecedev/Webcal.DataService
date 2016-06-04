@@ -58,6 +58,8 @@ namespace Connect.Service
                 return new FaultException("The license key is invalid or has expired.");
             }
 
+            try
+            {
             using (var context = new ConnectContext())
             {
                 var company = context.Users.FirstOrDefault(c => c.CompanyKey == connectKeys.CompanyKey);
@@ -87,6 +89,12 @@ namespace Connect.Service
                         result = new FaultException("Your computer is not currently authorized to use Connect at this time.");
                     }
                 }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                result = new FaultException("An unexcepted error occurred; " + ex.Message);
             }
 
             return result;
