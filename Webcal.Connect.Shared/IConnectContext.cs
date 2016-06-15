@@ -41,5 +41,7 @@
         DbSet<WorkshopSettings> WorkshopSettings { get; set; }
 
         DbSet<DetailedException> DetailedExceptions { get; set; }
+
+        DbSet<DirectUploadDocument> DirectUploadDocuments { get; set; }
     }
 }

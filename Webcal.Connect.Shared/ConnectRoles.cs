@@ -6,6 +6,7 @@
     {
         public const string Admin = "Administrator";
         public const string TachographCentre = "TachographCentre";
+        public const string DirectUpload = "DirectUpload";
 
         public static string[] AllExceptAdmin
         {
