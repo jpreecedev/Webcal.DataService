@@ -1,8 +1,11 @@
 ﻿namespace Connect.Shared.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
     [Table("CustomerContacts")]
     public class CustomerContact : BaseModel, ICustomerContact
@@ -27,6 +30,15 @@
 
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+
+        [XmlIgnore, NotMapped]
+        public ConnectUser ConnectUser { get; set; }
+
+        [XmlIgnore]
+        public int UserId { get; set; }
+
+        [DataMember]
+        public DateTime? Uploaded { get; set; }
 
         public override string ToString()
         {

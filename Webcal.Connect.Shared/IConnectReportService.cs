@@ -19,7 +19,7 @@
 
         [OperationContract]
         void UploadTechnician(Technician technician);
-
+        
         [OperationContract]
         void UploadWorkshopSettings(WorkshopSettings workshopSettings);
     }

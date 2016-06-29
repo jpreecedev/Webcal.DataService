@@ -1,5 +1,6 @@
 namespace Connect.Service
 {
+    using System;
     using System.Linq;
     using System.ServiceModel;
     using Shared;
@@ -17,6 +18,9 @@ namespace Connect.Service
         {
             using (var context = new ConnectContext())
             {
+                customerContact.UserId = GetUserId();
+                customerContact.Uploaded = DateTime.Now;
+
                 context.CustomerContacts.Add(customerContact);
                 context.SaveChanges();
             }
