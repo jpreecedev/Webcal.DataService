@@ -157,6 +157,7 @@
     <Compile Include="Models\QCReport6Month.cs" />
     <Compile Include="Models\ServiceCredentials.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\StatusReportMap.cs" />
     <Compile Include="Models\TachoCentreOperator.cs" />
     <Compile Include="Models\TachoFleetEmail.cs" />
     <Compile Include="Models\TachographDocument.cs" />

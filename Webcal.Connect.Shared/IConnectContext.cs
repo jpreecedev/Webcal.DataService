@@ -43,5 +43,7 @@
         DbSet<DetailedException> DetailedExceptions { get; set; }
 
         DbSet<DirectUploadDocument> DirectUploadDocuments { get; set; }
+
+        DbSet<StatusReportMap> StatusReportMaps { get; set; }
     }
 }
