@@ -155,6 +155,7 @@
     <Compile Include="Models\ReportType.cs" />
     <Compile Include="Models\QCReport.cs" />
     <Compile Include="Models\QCReport6Month.cs" />
+    <Compile Include="Models\SerializedData.cs" />
     <Compile Include="Models\ServiceCredentials.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\StatusReportMap.cs" />

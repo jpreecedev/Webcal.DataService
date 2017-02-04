@@ -103,6 +103,15 @@
                 context.Set<T>().Add(document);
 
                 context.SaveChanges();
+
+                var serializedData = new SerializedData
+                {
+                    DocumentType = typeof(T).FullName,
+                    DocumentId = document.Id,
+                    Data = document.SerializedData
+                };
+                context.Set<SerializedData>().Add(serializedData);
+                context.SaveChanges();
             }
         }
 
@@ -146,6 +155,15 @@
                     document.UserId = GetUserId();
                     context.Set<T>().Add(document);
 
+                    context.SaveChanges();
+
+                    var serializedData = new SerializedData
+                    {
+                        DocumentType = typeof(T).FullName,
+                        DocumentId = document.Id,
+                        Data = document.SerializedData
+                    };
+                    context.Set<SerializedData>().Add(serializedData);
                     context.SaveChanges();
                 }
             }

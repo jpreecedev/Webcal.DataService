@@ -1,4 +1,6 @@
-﻿namespace Connect.Shared.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Connect.Shared.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;
@@ -37,7 +39,7 @@
         [XmlIgnore]
         public string CompanyName { get; set; }
 
-        [MaxLength]
+        [NotMapped]
         public byte[] SerializedData { get; set; }
 
         [XmlIgnore]
