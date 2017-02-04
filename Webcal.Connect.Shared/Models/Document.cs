@@ -58,7 +58,7 @@ namespace Connect.Shared.Models
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Created.Equals(other.Created) && string.Equals(Office, other.Office) && string.Equals(RegistrationNumber, other.RegistrationNumber) && string.Equals(TachographMake, other.TachographMake) && string.Equals(TachographModel, other.TachographModel) && string.Equals(SerialNumber, other.SerialNumber) && InspectionDate.Equals(other.InspectionDate) && string.Equals(Technician, other.Technician) && string.Equals(CustomerContact, other.CustomerContact) && string.Equals(DepotName, other.DepotName) && string.Equals(CompanyName, other.CompanyName) && Equals(SerializedData, other.SerializedData) && UserId == other.UserId && Uploaded.Equals(other.Uploaded);
+            return Created.Equals(other.Created) && string.Equals(Office, other.Office) && string.Equals(RegistrationNumber, other.RegistrationNumber) && string.Equals(TachographMake, other.TachographMake) && string.Equals(TachographModel, other.TachographModel) && string.Equals(SerialNumber, other.SerialNumber) && InspectionDate.Equals(other.InspectionDate) && string.Equals(Technician, other.Technician) && string.Equals(CustomerContact, other.CustomerContact) && string.Equals(DepotName, other.DepotName) && string.Equals(CompanyName, other.CompanyName) && UserId == other.UserId && Uploaded.Equals(other.Uploaded);
         }
 
         public override bool Equals(object obj)
@@ -84,7 +84,6 @@ namespace Connect.Shared.Models
                 hashCode = (hashCode * 397) ^ (CustomerContact != null ? CustomerContact.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (DepotName != null ? DepotName.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (CompanyName != null ? CompanyName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (SerializedData != null ? SerializedData.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ UserId;
                 hashCode = (hashCode * 397) ^ Uploaded.GetHashCode();
                 return hashCode;

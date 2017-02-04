@@ -129,6 +129,14 @@
 
                     context.Entry(existingDocument).CurrentValues.SetValues(document);
                     context.SaveChanges();
+
+                    var documentType = typeof(T).FullName;
+                    var serializedData = context.SerializedData.FirstOrDefault(c => c.DocumentId == document.Id && c.DocumentType == documentType);
+                    if (serializedData != null)
+                    {
+                        serializedData.Data = document.SerializedData;
+                        context.SaveChanges();
+                    }
                 }
             }
         }
