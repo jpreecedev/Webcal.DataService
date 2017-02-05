@@ -45,5 +45,7 @@
         DbSet<DirectUploadDocument> DirectUploadDocuments { get; set; }
 
         DbSet<StatusReportMap> StatusReportMaps { get; set; }
+
+        DbSet<SerializedData> SerializedData { get; set; }
     }
 }

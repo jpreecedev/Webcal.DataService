@@ -119,6 +119,7 @@
     <Compile Include="DocumentTypeHelper.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FastQueryHelper.cs" />
+    <Compile Include="FullDocumentTypeAttribute.cs" />
     <Compile Include="IConnectBindingHelper.cs" />
     <Compile Include="IConnectContext.cs" />
     <Compile Include="IConnectDocument.cs" />
