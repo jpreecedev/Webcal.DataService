@@ -13,7 +13,9 @@ namespace Connect.Shared
         Undownloadability = 2,
         [FullDocumentType(typeof(LetterForDecommissioningDocument))]
         LetterForDecommissioning = 4,
+        [FullDocumentType("Connect.Shared.Models.QCReports")]
         QCReport = 8,
+        [FullDocumentType(typeof(QCReport6Month))]
         QCReport6Month = 16
     }
 }
